@@ -29,6 +29,14 @@ from sales_lab.domain.discovery_meeting import (
     QuestionCategory,
     QuestionKind,
 )
+from sales_lab.domain.requirements import (
+    AcceptanceCriterion,
+    Requirement,
+    RequirementSet,
+    RequirementStatus,
+    RequirementType,
+    UnresolvedRequirement,
+)
 from sales_lab.domain.stakeholders import (
     AuthorityState,
     DecisionAuthority,
@@ -43,6 +51,7 @@ from sales_lab.domain.stakeholders import (
 )
 
 __all__ = [
+    "AcceptanceCriterion",
     "Assumption",
     "AuthorityState",
     "BusinessProcess",
@@ -67,6 +76,10 @@ __all__ = [
     "ProcessStep",
     "QuestionCategory",
     "QuestionKind",
+    "Requirement",
+    "RequirementSet",
+    "RequirementStatus",
+    "RequirementType",
     "ResponsibilityCategory",
     "StakeholderEvidence",
     "StakeholderMap",
@@ -74,6 +87,7 @@ __all__ = [
     "StakeholderResponsibility",
     "StakeholderRole",
     "UnknownInformation",
+    "UnresolvedRequirement",
     "VerifiedFact",
     "WorkflowTransition",
 ]

@@ -8,8 +8,8 @@ An **executable textbook for learning Sales Engineering through deterministic si
 
 This repository will connect the craft of technical discovery, solution design, demonstration,
 validation, and communication to small programs that readers can run, inspect, test, and change.
-Chapters 0–4 now progress from immutable customer facts through evidence classification, discovery,
-and process modeling to an evidence-bounded stakeholder analysis.
+Chapters 0–5 now progress from immutable customer facts through evidence classification, discovery,
+and process modeling to an evidence-bounded stakeholder analysis and traceable requirements engineering.
 
 ## Vision
 
@@ -75,6 +75,7 @@ uv run sales-lab investigate
 uv run sales-lab discovery
 uv run sales-lab process
 uv run sales-lab stakeholders
+uv run sales-lab requirements
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -126,10 +127,10 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Add a deterministic Chapter 2 discovery workflow and evidence-bounded meeting summary.
 - [x] Model the Chapter 3 current-state workflow with explicit boundaries, gaps, and Mermaid output.
 - [x] Map Chapter 4 roles, responsibilities, process participation, authority, and perspective gaps.
+- [x] Translate evidence into validated, traceable Chapter 5 requirements and explicit unknowns.
 - [ ] Expand the example catalog and cross-chapter capstone exercises.
 
-The unchecked item describes direction, not a promise of scope or delivery date. Discovery,
-requirements, architecture, proposals, and customer-success systems remain future chapters.
+The unchecked item describes direction, not a promise of scope or delivery date. Architecture, proposals, and customer-success systems remain future chapters.
 
 ## Contributing
 

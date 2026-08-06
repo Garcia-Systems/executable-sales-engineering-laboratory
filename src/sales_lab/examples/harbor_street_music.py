@@ -22,6 +22,14 @@ from sales_lab.domain.discovery_meeting import (
     EvidenceRecord,
     MeetingParticipant,
 )
+from sales_lab.domain.requirements import (
+    AcceptanceCriterion,
+    Requirement,
+    RequirementSet,
+    RequirementStatus,
+    RequirementType,
+    UnresolvedRequirement,
+)
 from sales_lab.domain.stakeholders import (
     AuthorityState,
     DecisionAuthority,
@@ -203,6 +211,11 @@ def harbor_street_music_stakeholder_map() -> StakeholderMap:
         StakeholderEvidence(
             "E6", "Final spending authority was not established.", "Discovery evidence gap"
         ),
+        StakeholderEvidence(
+            "E7",
+            "The organization has not yet approved a software budget.",
+            "Chapter 0 customer situation known constraint",
+        ),
     )
     return StakeholderMap(
         "Harbor Street Music lesson inquiry process",
@@ -285,5 +298,72 @@ def harbor_street_music_stakeholder_map() -> StakeholderMap:
                 "Responsibility for incorrect calendar information has not been established.",
                 "Who handles problems when calendar information is incorrect?",
             ),
+        ),
+    )
+
+
+def harbor_street_music_requirements() -> RequirementSet:
+    """Return only requirements deliberately authored from established earlier evidence."""
+    return RequirementSet(
+        engagement="Harbor Street Music lesson inquiry process",
+        requirements=(
+            Requirement(
+                "REQ-001",
+                (
+                    "Authorized staff must be able to determine the current status of "
+                    "an active lesson inquiry."
+                ),
+                RequirementType.FUNCTIONAL,
+                "staff",
+                ("E2",),
+                (
+                    AcceptanceCriterion(
+                        "AC-001",
+                        "an active inquiry has a recorded status",
+                        "an authorized staff member views that inquiry",
+                        "the recorded status is available",
+                    ),
+                ),
+            ),
+            Requirement(
+                "REQ-002",
+                "Music instructors must be able to access confirmed lesson schedule information.",
+                RequirementType.FUNCTIONAL,
+                "instructor",
+                ("E4",),
+                (
+                    AcceptanceCriterion(
+                        "AC-002",
+                        "a lesson is confirmed and its schedule information is recorded",
+                        "the music instructor accesses the confirmed lesson schedule",
+                        "the recorded schedule information is available",
+                    ),
+                ),
+            ),
+            Requirement(
+                "REQ-003",
+                (
+                    "The organization must operate within the constraint that no software "
+                    "budget has yet been approved."
+                ),
+                RequirementType.CONSTRAINT,
+                "manager",
+                ("E7",),
+                (
+                    AcceptanceCriterion(
+                        "AC-003",
+                        "a solution option requires software spending",
+                        "the option is evaluated",
+                        (
+                            "the absence of an approved budget is recorded as a constraint "
+                            "rather than a zero-dollar budget"
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        unresolved=tuple(
+            UnresolvedRequirement(area, RequirementStatus.UNKNOWN)
+            for area in ("Authentication", "Retention", "Availability", "Integration")
         ),
     )

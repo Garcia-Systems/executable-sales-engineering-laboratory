@@ -31,3 +31,9 @@ Run `python examples/debug_chapter_4.py` or select **Debug Chapter 4 Stakeholder
 Follow the marked assignments from the Chapter 3 process through roles, responsibilities,
 authority, evidence, perspective gaps, and the report. All domain objects and tuples remain
 immutable, and repeated output remains deterministic.
+
+
+## Chapter 5 debugging laboratory
+
+Run `python examples/debug_chapter_5.py` or select **Debug Chapter 5 Requirements** in VS Code.
+Inspect the marked evidence-to-validation and traceability-matrix breakpoints.
