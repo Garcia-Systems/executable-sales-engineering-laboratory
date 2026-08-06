@@ -8,8 +8,8 @@ An **executable textbook for learning Sales Engineering through deterministic si
 
 This repository will connect the craft of technical discovery, solution design, demonstration,
 validation, and communication to small programs that readers can run, inspect, test, and change.
-Chapters 0–7 now progress from immutable customer facts through discovery and process modeling to
-traceable requirements, vendor-neutral capabilities, and evidence-based current capability gaps.
+Chapters 0–8 now progress from immutable customer facts through discovery and process modeling to
+traceable requirements, vendor-neutral capabilities, and evidence-based current capability gaps and product-neutral solution approaches.
 
 ## Vision
 
@@ -78,6 +78,7 @@ uv run sales-lab stakeholders
 uv run sales-lab requirements
 uv run sales-lab capabilities
 uv run sales-lab gaps
+uv run sales-lab approaches
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -132,7 +133,8 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Translate evidence into validated, traceable Chapter 5 requirements and explicit unknowns.
 - [x] Map Chapter 5 requirements to vendor-neutral Chapter 6 capabilities and explicit coverage gaps.
 - [x] Assess Chapter 7 current resources, partial capabilities, unknowns, and evidence-based gaps.
-- [ ] Compare solution approaches in Chapter 8 without prematurely selecting products.
+- [x] Compare solution approaches in Chapter 8 without prematurely selecting products.
+- [ ] Model coherent future-state solution concepts in Chapter 9.
 - [ ] Expand the example catalog and cross-chapter capstone exercises.
 
 The unchecked item describes direction, not a promise of scope or delivery date. Architecture, proposals, and customer-success systems remain future chapters.

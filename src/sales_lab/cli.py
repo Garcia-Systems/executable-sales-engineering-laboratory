@@ -13,8 +13,10 @@ from sales_lab.examples.harbor_street_music import (
     harbor_street_music_discovery_meeting,
     harbor_street_music_requirements,
     harbor_street_music_situation,
+    harbor_street_music_solution_options,
     harbor_street_music_stakeholder_map,
 )
+from sales_lab.reports.approaches import render_solution_approach_report
 from sales_lab.reports.business_process import render_business_process_report
 from sales_lab.reports.capabilities import render_capability_report
 from sales_lab.reports.gaps import render_gap_report
@@ -25,6 +27,7 @@ from sales_lab.reports.markdown import (
 )
 from sales_lab.reports.requirements import render_requirements_report
 from sales_lab.reports.stakeholders import render_stakeholder_report
+from sales_lab.services.approaches import analyze_solution_approaches
 from sales_lab.services.business_process import validate_business_process
 from sales_lab.services.capabilities import analyze_capabilities
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
@@ -63,6 +66,7 @@ def chapters() -> None:
         "\n5. Requirements Engineering"
         "\n6. Capability Mapping"
         "\n7. Current Capabilities & Gap Analysis"
+        "\n8. Solution Approaches"
     )
 
 
@@ -160,6 +164,19 @@ def gaps() -> None:
     )
     analysis = analyze_gaps(required, harbor_street_music_current_capability_inventory())
     typer.echo(render_gap_report(analysis), nl=False)
+
+
+@app.command()
+def approaches() -> None:
+    """Print the Chapter 8 neutral alternative analysis without selecting a winner."""
+    required = analyze_capabilities(
+        harbor_street_music_requirements(),
+        harbor_street_music_stakeholder_map(),
+        harbor_street_music_capability_map(),
+    )
+    gaps_analysis = analyze_gaps(required, harbor_street_music_current_capability_inventory())
+    analysis = analyze_solution_approaches(gaps_analysis, harbor_street_music_solution_options())
+    typer.echo(render_solution_approach_report(analysis), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.

@@ -27,3 +27,7 @@ All notable changes to this project will be documented in this file. The format 
 - Chapter 7 immutable current-resource inventory, evidence-based capability states and gap types,
   deterministic analysis, matrix, traceability report, Mermaid diagram, `sales-lab gaps`, immutable
   evidence experiment, tests, documentation, and debugging laboratory.
+
+- Chapter 8 immutable solution approaches, explicit assumptions and constraints, qualitative
+  tradeoffs and feasibility, traceability guardrail, comparison report and Mermaid diagram,
+  `sales-lab approaches`, immutable experiment, tests, documentation, and debugging laboratory.
