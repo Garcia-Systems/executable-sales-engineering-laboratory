@@ -22,6 +22,18 @@ from sales_lab.domain.discovery_meeting import (
     EvidenceRecord,
     MeetingParticipant,
 )
+from sales_lab.domain.stakeholders import (
+    AuthorityState,
+    DecisionAuthority,
+    PerspectiveGap,
+    ProcessParticipation,
+    ResponsibilityCategory,
+    StakeholderEvidence,
+    StakeholderMap,
+    StakeholderRelationship,
+    StakeholderResponsibility,
+    StakeholderRole,
+)
 from sales_lab.question_catalog import DISCOVERY_QUESTION_CATALOG
 from sales_lab.services.discovery_meeting import capture_evidence, record_question, record_response
 from sales_lab.services.investigation import DiscoveryEvidence
@@ -147,5 +159,131 @@ def harbor_street_music_business_process() -> BusinessProcess:
             WorkflowTransition("contact", "decision"),
             WorkflowTransition("decision", "calendar", "Accepts"),
             WorkflowTransition("decision", "declined-unknown", "Declines", is_unknown=True),
+        ),
+    )
+
+
+def harbor_street_music_stakeholder_map() -> StakeholderMap:
+    """Return Chapter 4 assertions, each bounded by established evidence or a gap."""
+    roles = (
+        StakeholderRole("student", "Prospective Student or Parent"),
+        StakeholderRole("staff", "Front Desk Staff"),
+        StakeholderRole("manager", "Store Manager"),
+        StakeholderRole("instructor", "Music Instructor"),
+        StakeholderRole("technology-unknown", "Technology Ownership: Unknown"),
+    )
+    evidence = (
+        StakeholderEvidence(
+            "E1",
+            "Prospective students or parents submit lesson inquiries and may accept or decline.",
+            "Chapter 3 process steps inquiry and decision",
+        ),
+        StakeholderEvidence(
+            "E2",
+            "Front desk staff enter inquiries, contact prospective students, and copy confirmed "
+            "lessons into the calendar.",
+            "Harbor Street Music discovery meeting and Chapter 3 process",
+        ),
+        StakeholderEvidence(
+            "E3",
+            "The store manager oversees the lesson program and discusses process changes.",
+            "Store manager discovery statement",
+        ),
+        StakeholderEvidence(
+            "E4",
+            "Music instructors teach scheduled lessons and depend on accurate schedule "
+            "information.",
+            "Lesson-operation discovery note",
+        ),
+        StakeholderEvidence(
+            "E5",
+            "Ownership of spreadsheet, calendar, devices, and accounts was not established.",
+            "Discovery evidence gap",
+        ),
+        StakeholderEvidence(
+            "E6", "Final spending authority was not established.", "Discovery evidence gap"
+        ),
+    )
+    return StakeholderMap(
+        "Harbor Street Music lesson inquiry process",
+        roles,
+        (
+            StakeholderResponsibility("student", ResponsibilityCategory.PROVIDES_INFORMATION, "E1"),
+            StakeholderResponsibility("student", ResponsibilityCategory.RECEIVES_OUTPUT, "E1"),
+            StakeholderResponsibility("student", ResponsibilityCategory.AFFECTED_BY_CHANGE, "E1"),
+            StakeholderResponsibility("staff", ResponsibilityCategory.PERFORMS_WORK, "E2"),
+            StakeholderResponsibility("staff", ResponsibilityCategory.USES_SYSTEM, "E2"),
+            StakeholderResponsibility("staff", ResponsibilityCategory.AFFECTED_BY_CHANGE, "E2"),
+            StakeholderResponsibility("manager", ResponsibilityCategory.OWNS_OUTCOME, "E3"),
+            StakeholderResponsibility("manager", ResponsibilityCategory.AFFECTED_BY_CHANGE, "E3"),
+            StakeholderResponsibility("instructor", ResponsibilityCategory.PERFORMS_WORK, "E4"),
+            StakeholderResponsibility("instructor", ResponsibilityCategory.RECEIVES_OUTPUT, "E4"),
+            StakeholderResponsibility(
+                "instructor", ResponsibilityCategory.AFFECTED_BY_CHANGE, "E4"
+            ),
+        ),
+        (
+            ProcessParticipation("student", "inquiry", "E1"),
+            ProcessParticipation("student", "decision", "E1"),
+            ProcessParticipation("staff", "spreadsheet", "E2"),
+            ProcessParticipation("staff", "review", "E2"),
+            ProcessParticipation("staff", "contact", "E2"),
+            ProcessParticipation("staff", "calendar", "E2"),
+        ),
+        (
+            DecisionAuthority(
+                "manager", "Approve technology spending", AuthorityState.UNKNOWN, "E6"
+            ),
+        ),
+        (
+            StakeholderRelationship(
+                "student", "staff", "Submits inquiry and receives follow-up", "E1"
+            ),
+            StakeholderRelationship(
+                "staff", "manager", "Maintains lesson-inquiry information", "E2"
+            ),
+            StakeholderRelationship(
+                "staff", "instructor", "Creates confirmed calendar entry", "E4"
+            ),
+            StakeholderRelationship(
+                "manager",
+                "technology-unknown",
+                "Technology responsibility not established",
+                "E5",
+                is_unknown=True,
+            ),
+        ),
+        evidence,
+        (
+            PerspectiveGap(
+                "technology-owner",
+                "Technology ownership has not been established.",
+                "Who maintains the spreadsheet and calendar accounts?",
+            ),
+            PerspectiveGap(
+                "spending-authority",
+                "Final spending authority has not been established.",
+                "Who has final authority to approve technology spending?",
+            ),
+            PerspectiveGap(
+                "instructor-follow-up",
+                "Instructor involvement in inquiry follow-up has not been established.",
+                "Do instructors participate in prospective-student follow-up?",
+            ),
+            PerspectiveGap(
+                "success-owner",
+                "Who defines lesson-inquiry process success has not been established.",
+                "Who defines whether the lesson inquiry process is successful?",
+            ),
+            PerspectiveGap(
+                "scheduling-participants",
+                "Additional scheduling participants have not been investigated.",
+                "Are any additional employees involved in scheduling?",
+            ),
+            PerspectiveGap(
+                "calendar-errors",
+                "Responsibility for incorrect calendar information has not been established.",
+                "Who handles problems when calendar information is incorrect?",
+            ),
         ),
     )

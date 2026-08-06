@@ -24,3 +24,10 @@ transition inspection, validation, Mermaid generation, and report generation. Im
 are `process.steps`, `transitions`, `model.terminal_steps`, `model.unknown_steps`, and `mermaid`.
 Frozen dataclasses and tuples must remain unchanged; repeated runs must produce identical node
 aliases, transition order, unknown markers, and Markdown.
+
+## Chapter 4 debugging laboratory
+
+Run `python examples/debug_chapter_4.py` or select **Debug Chapter 4 Stakeholders** in VS Code.
+Follow the marked assignments from the Chapter 3 process through roles, responsibilities,
+authority, evidence, perspective gaps, and the report. All domain objects and tuples remain
+immutable, and repeated output remains deterministic.

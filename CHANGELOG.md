@@ -15,3 +15,7 @@ All notable changes to this project will be documented in this file. The format 
   Markdown report, `sales-lab situation` command, tests, and debugging entry point.
 - Chapter 2 discovery meeting domain objects, question catalog, deterministic workflow, report,
   CLI command, diagram, tests, documentation, and debugging exercise.
+- Chapter 3 current-state process model, validation, diagram, report, CLI, tests, and laboratory.
+- Chapter 4 immutable stakeholder roles, evidence-linked responsibilities and process participation,
+  explicit authority unknowns, perspective-gap questions, matrix, Mermaid diagram, report,
+  `sales-lab stakeholders` command, tests, documentation, and debugging laboratory.
