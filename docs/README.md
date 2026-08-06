@@ -1,5 +1,5 @@
 # Documentation
 
 This directory contains the executable textbook. Begin with the
-[chapter index](chapters/README.md) and Chapter 0. Diagram and image directories remain available as
+[chapter index](chapters/README.md) and follow Chapters 0–4 in order. Diagram and image directories remain available as
 the curriculum grows.

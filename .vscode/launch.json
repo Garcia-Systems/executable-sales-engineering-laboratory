@@ -8,6 +8,14 @@
       "program": "${workspaceFolder}/examples/debug_chapter_0.py",
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug Chapter 4 Stakeholders",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/debug_chapter_4.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
     }
   ]
 }
