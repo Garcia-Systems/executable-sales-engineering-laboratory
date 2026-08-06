@@ -11,4 +11,5 @@ All notable changes to this project will be documented in this file. The format 
 - Initial Python 3.13 project foundation.
 - Placeholder `sales-lab` commands for project information, chapters, and examples.
 - Automated linting, formatting, typing, tests, coverage, and continuous integration.
-
+- Chapter 0, its immutable `CustomerSituation`, Harbor Street Music fixture, structured summary,
+  Markdown report, `sales-lab situation` command, tests, and debugging entry point.

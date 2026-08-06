@@ -8,8 +8,7 @@ An **executable textbook for learning Sales Engineering through deterministic si
 
 This repository will connect the craft of technical discovery, solution design, demonstration,
 validation, and communication to small programs that readers can run, inspect, test, and change.
-It currently provides the production-quality foundation for that curriculum; it intentionally does
-not contain chapters or domain models yet.
+Chapter 0 now provides the first immutable customer-situation model and executable report.
 
 ## Vision
 
@@ -63,22 +62,14 @@ python -m pip install -e '.[dev]'
 
 ## CLI examples
 
-The foundation includes three placeholder commands. They confirm the application is installed and
-describe where educational material will appear without presenting unfinished content as a lesson.
+The CLI exposes the chapter catalog and a deterministic setup scenario. The first scenario records
+what is known before discovery begins; it neither diagnoses nor recommends a solution.
 
 ```console
-$ uv run sales-lab info
-Executable Sales Engineering Laboratory
-A deterministic, code-first environment for learning Sales Engineering.
-Foundation status: ready for future chapters and simulations.
-
-$ uv run sales-lab chapters
-Chapters
-No chapters have been published yet. The textbook foundation is ready for future lessons.
-
-$ uv run sales-lab examples
-Examples
-No executable examples have been published yet.
+uv run sales-lab info
+uv run sales-lab chapters
+uv run sales-lab examples
+uv run sales-lab situation
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -89,16 +80,16 @@ Run `uv run sales-lab --help` to see all commands and options.
 .
 ├── .github/workflows/       # Continuous integration
 ├── docs/
-│   ├── chapters/            # Future textbook chapters
+│   ├── chapters/            # Chapter index and textbook prose
 │   ├── diagrams/            # Future diagram sources
 │   └── images/              # Future documentation images
-├── examples/                # Future standalone executable examples
+├── examples/                # Learner-owned debugger entry points
 ├── src/sales_lab/
-│   ├── domain/              # Future domain concepts (currently empty)
-│   ├── services/            # Future use-case orchestration
-│   ├── reports/             # Future deterministic reporting
+│   ├── domain/              # Immutable customer facts
+│   ├── services/            # Structured deterministic summaries
+│   ├── reports/             # Markdown presentation
 │   ├── diagrams/            # Future diagram generation
-│   ├── examples/            # Future packaged examples
+│   ├── examples/            # Reusable fictional fixtures
 │   └── cli.py               # Typer command-line entry point
 └── tests/                    # Automated tests
 ```
@@ -119,19 +110,19 @@ uv run pytest
 uv run pre-commit run --all-files
 ```
 
-Future simulations must use explicit inputs and stable ordering. Randomness, predictive models,
+Simulations use explicit inputs and stable ordering. Randomness, predictive models,
 LLM dependencies, external services, and network-dependent behavior are outside the project scope.
 
 ## Roadmap
 
 - [x] Establish Python 3.13 packaging, CLI, tests, type checking, linting, and CI.
-- [ ] Define the curriculum map and chapter interface.
-- [ ] Introduce the first deterministic Sales Engineering concept and simulation.
-- [ ] Add reproducible reports and diagrams tied to learning objectives.
+- [x] Define the Chapter 0 interface and curriculum entry point.
+- [x] Introduce an immutable customer situation and deterministic summary.
+- [x] Add a reproducible Markdown report and Chapter 0 diagram.
 - [ ] Expand the example catalog and cross-chapter capstone exercises.
 
-The unchecked items describe direction, not a promise of scope or delivery date. Domain models and
-textbook content will be designed deliberately in later releases.
+The unchecked item describes direction, not a promise of scope or delivery date. Discovery,
+requirements, architecture, proposals, and customer-success systems remain future chapters.
 
 ## Contributing
 

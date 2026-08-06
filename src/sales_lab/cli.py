@@ -4,6 +4,10 @@ from typing import Annotated
 
 import typer
 
+from sales_lab.examples.harbor_street_music import harbor_street_music_situation
+from sales_lab.reports.markdown import render_situation_summary
+from sales_lab.services.situation_summary import build_situation_summary
+
 app = typer.Typer(
     help="Explore the executable Sales Engineering laboratory.",
     no_args_is_help=True,
@@ -16,17 +20,14 @@ def info() -> None:
     typer.echo(
         "Executable Sales Engineering Laboratory\n"
         "A deterministic, code-first environment for learning Sales Engineering.\n"
-        "Foundation status: ready for future chapters and simulations."
+        "Chapter 0 status: ready; customer facts remain separate from assumptions."
     )
 
 
 @app.command()
 def chapters() -> None:
     """List the educational chapters available in the laboratory."""
-    typer.echo(
-        "Chapters\n"
-        "No chapters have been published yet. The textbook foundation is ready for future lessons."
-    )
+    typer.echo("Chapters\n0. Setting Up the Sales Engineering Laboratory")
 
 
 @app.command()
@@ -38,10 +39,17 @@ def examples(
     ] = False,
 ) -> None:
     """List deterministic examples available in the laboratory."""
-    message = "Examples\nNo executable examples have been published yet."
+    message = "Examples\nHarbor Street Music — customer situation setup check"
     if verbose:
-        message += " Future examples will use fixed inputs and reproducible outputs."
+        message += " Uses fixed customer-supplied inputs and reproducible output."
     typer.echo(message)
+
+
+@app.command()
+def situation() -> None:
+    """Print the deterministic Chapter 0 customer situation."""
+    summary = build_situation_summary(harbor_street_music_situation())
+    typer.echo(render_situation_summary(summary), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.
