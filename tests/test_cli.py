@@ -41,6 +41,20 @@ def test_chapters_lists_chapter_zero() -> None:
     assert "6. Capability Mapping" in result.stdout
     assert "7. Current Capabilities & Gap Analysis" in result.stdout
     assert "8. Solution Approaches" in result.stdout
+    assert "9. Future-State Solution Architecture" in result.stdout
+
+
+def test_architecture_prints_candidates_coverage_traceability_and_unknowns() -> None:
+    """Chapter 9 exposes logical alternatives without selecting technology or a winner."""
+    result = runner.invoke(app, ["architecture"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("# Future-State Solution Architecture")
+    assert "Existing-Tool Enhancement" in result.stdout
+    assert "Unified Application" in result.stdout
+    assert "## Capability Coverage" in result.stdout
+    assert "## Requirement Traceability" in result.stdout
+    assert "Calendar interface availability is not yet established" in result.stdout
+    assert "recommended architecture" not in result.stdout.lower()
 
 
 def test_approaches_prints_neutral_comparison_without_a_winner() -> None:
