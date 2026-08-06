@@ -1,5 +1,15 @@
 """Reusable Chapter 0 customer-supplied facts."""
 
+from sales_lab.domain.approaches import (
+    ApproachAssumption,
+    ApproachTradeoff,
+    FeasibilityState,
+    QualitativeState,
+    SolutionApproach,
+    SolutionApproachType,
+    SolutionOptionSet,
+    TradeoffDimension,
+)
 from sales_lab.domain.business_process import (
     BusinessProcess,
     DecisionPoint,
@@ -442,6 +452,7 @@ def harbor_street_music_current_capability_inventory() -> CurrentCapabilityInven
             stakeholder_evidence["E7"],
         )
     )
+
     return CurrentCapabilityInventory(
         harbor_street_music_capability_map().engagement,
         (
@@ -515,5 +526,159 @@ def harbor_street_music_current_capability_inventory() -> CurrentCapabilityInven
                 ("E7",),
                 "The current record explicitly preserves the unapproved-budget constraint.",
             ),
+        ),
+    )
+
+
+def harbor_street_music_solution_options() -> SolutionOptionSet:
+    """Return vendor-neutral alternatives linked to the actual Chapter 7 gaps."""
+    validation = FeasibilityState.REQUIRES_VALIDATION
+
+    def approach(  # noqa: PLR0913
+        identifier: str,
+        name: str,
+        approach_type: SolutionApproachType,
+        description: str,
+        assumption: str,
+        evidence_need: str,
+        feasibility: FeasibilityState,
+        existing: str,
+        new: str,
+        custom: str,
+        effort: QualitativeState,
+    ) -> SolutionApproach:
+        return SolutionApproach(
+            identifier,
+            name,
+            approach_type,
+            description,
+            ("CAP-001",),
+            (ApproachAssumption(assumption, "Not yet established", validation),),
+            ("REQ-003",),
+            (evidence_need,),
+            feasibility,
+            (
+                ApproachTradeoff(
+                    TradeoffDimension.IMPLEMENTATION_EFFORT,
+                    effort,
+                    "Qualitative teaching assumption; validate through future analysis.",
+                ),
+            ),
+            existing,
+            new,
+            custom,
+        )
+
+    return SolutionOptionSet(
+        harbor_street_music_capability_map().engagement,
+        (
+            approach(
+                "APP-001",
+                "Standardize Manual Follow-Up",
+                SolutionApproachType.PROCESS_CHANGE,
+                "Define a consistent status and follow-up process using current resources.",
+                "Staff can consistently follow an agreed workflow.",
+                "Workflow observation and staff validation",
+                validation,
+                "Yes",
+                "No",
+                "No",
+                QualitativeState.MODERATE,
+            ),
+            approach(
+                "APP-002",
+                "Configure the Existing Spreadsheet",
+                SolutionApproachType.CONFIGURE_EXISTING,
+                "Represent inquiry status consistently in the current spreadsheet.",
+                "The spreadsheet supports controlled shared editing and a usable status field.",
+                "Spreadsheet capability and usage evidence",
+                validation,
+                "Yes",
+                "No",
+                "No",
+                QualitativeState.UNKNOWN,
+            ),
+            approach(
+                "APP-003",
+                "Investigate Existing-Tool Integration",
+                SolutionApproachType.INTEGRATE_EXISTING,
+                (
+                    "Explore exchange of inquiry and confirmed-appointment information; "
+                    "technical feasibility is not yet established."
+                ),
+                "The current spreadsheet and calendar expose compatible integration mechanisms.",
+                "Technical interface, access, authentication, and data-flow evidence",
+                validation,
+                "Yes",
+                "No",
+                "Maybe",
+                QualitativeState.UNKNOWN,
+            ),
+            approach(
+                "APP-004",
+                "Evaluate Commercial Software",
+                SolutionApproachType.BUY,
+                "Evaluate a vendor-neutral commercial system that could provide the capability.",
+                "A suitable product exists and procurement could become possible.",
+                "Budget approval, product research, and user validation",
+                FeasibilityState.NOT_EVALUATED,
+                "Maybe",
+                "Yes",
+                "No",
+                QualitativeState.NOT_EVALUATED,
+            ),
+            approach(
+                "APP-005",
+                "Develop a Custom Workflow",
+                SolutionApproachType.BUILD,
+                (
+                    "Explore custom software implementing status tracking without assuming it "
+                    "is desirable."
+                ),
+                "Custom development skills and maintenance capacity could be available.",
+                "Technical, delivery, maintenance, and cost analysis",
+                FeasibilityState.NOT_EVALUATED,
+                "Maybe",
+                "No",
+                "Yes",
+                QualitativeState.NOT_EVALUATED,
+            ),
+            approach(
+                "APP-006",
+                "Combine Process and Technology Changes",
+                SolutionApproachType.HYBRID,
+                (
+                    "Combine validated process, configuration, integration, purchase, or "
+                    "development elements."
+                ),
+                "Compatible elements can be combined without introducing unacceptable complexity.",
+                "Evidence for each included element and their interactions",
+                FeasibilityState.NOT_EVALUATED,
+                "Yes",
+                "Maybe",
+                "Maybe",
+                QualitativeState.NOT_EVALUATED,
+            ),
+            approach(
+                "APP-007",
+                "Continue the Current Process",
+                SolutionApproachType.STATUS_QUO,
+                (
+                    "Retain the current process as a comparison baseline rather than assuming "
+                    "intervention is justified."
+                ),
+                "The consequences of leaving the gap unchanged can be investigated.",
+                "Baseline consequences and workflow evidence",
+                validation,
+                "Yes",
+                "No",
+                "No",
+                QualitativeState.LOW,
+            ),
+        ),
+        (
+            "Which current-tool functions and access controls are available?",
+            "What consequences follow if inquiry-status tracking remains unchanged?",
+            "Who can approve spending if a future option requires it?",
         ),
     )

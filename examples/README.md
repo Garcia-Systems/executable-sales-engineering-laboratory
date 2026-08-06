@@ -49,3 +49,10 @@ gap detection; then inspect the immutable unsupported-capability experiment.
 Run `python examples/debug_chapter_7.py` or select **Debug Chapter 7 Gap Analysis** in VS Code.
 Inspect the required capability, current resources, evidence, assessment, gap type, and originating
 follow-up question without crossing into remedy selection.
+
+
+## Chapter 8 debugging laboratory
+
+Run `python examples/debug_chapter_8.py` or select **Debug Chapter 8 Solution Approaches** in VS Code.
+Inspect gap-to-approach traceability, assumptions, constraints, evidence needs, qualitative tradeoffs,
+feasibility, comparison, and the immutable unsupported mobile-app experiment.

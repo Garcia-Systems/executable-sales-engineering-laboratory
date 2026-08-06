@@ -40,6 +40,18 @@ def test_chapters_lists_chapter_zero() -> None:
     assert "3. Business Process Modeling" in result.stdout
     assert "6. Capability Mapping" in result.stdout
     assert "7. Current Capabilities & Gap Analysis" in result.stdout
+    assert "8. Solution Approaches" in result.stdout
+
+
+def test_approaches_prints_neutral_comparison_without_a_winner() -> None:
+    """The Chapter 8 command exposes traceable candidates and qualitative comparison."""
+    result = runner.invoke(app, ["approaches"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("# Solution Approach Analysis")
+    assert "## Comparison Matrix" in result.stdout
+    assert "Configure the Existing Spreadsheet" in result.stdout
+    assert "Technical feasibility not yet established" in result.stdout
+    assert "Salesforce" not in result.stdout
 
 
 def test_capabilities_prints_vendor_neutral_analysis() -> None:
