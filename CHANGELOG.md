@@ -31,3 +31,7 @@ All notable changes to this project will be documented in this file. The format 
 - Chapter 8 immutable solution approaches, explicit assumptions and constraints, qualitative
   tradeoffs and feasibility, traceability guardrail, comparison report and Mermaid diagram,
   `sales-lab approaches`, immutable experiment, tests, documentation, and debugging laboratory.
+- Chapter 9 immutable logical candidate architectures, explicit boundaries, actors, components,
+  information flows, ADRs, assumptions, unknown dependencies, capability coverage and traceability,
+  qualitative comparison without ranking, generated Mermaid and Markdown, `sales-lab architecture`,
+  immutable overengineering and missing-capability experiments, tests, and debugging laboratory.

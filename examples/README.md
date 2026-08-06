@@ -56,3 +56,10 @@ follow-up question without crossing into remedy selection.
 Run `python examples/debug_chapter_8.py` or select **Debug Chapter 8 Solution Approaches** in VS Code.
 Inspect gap-to-approach traceability, assumptions, constraints, evidence needs, qualitative tradeoffs,
 feasibility, comparison, and the immutable unsupported mobile-app experiment.
+
+## Chapter 9 debugging laboratory
+
+Run `python examples/debug_chapter_9.py` or select **Debug Chapter 9 Architecture** in VS Code.
+Follow requirement and capability links into components, connections, information flows, coverage,
+unjustified-component findings, and unknown dependencies. The experiment helpers return new frozen
+candidates rather than mutating the canonical architectures.

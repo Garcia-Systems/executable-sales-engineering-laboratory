@@ -10,6 +10,23 @@ from sales_lab.domain.approaches import (
     SolutionOptionSet,
     TradeoffDimension,
 )
+from sales_lab.domain.architecture import (
+    ArchitectureActor,
+    ArchitectureAssumption,
+    ArchitectureComparison,
+    ArchitectureComponent,
+    ArchitectureConnection,
+    ArchitectureDecision,
+    ArchitectureDependency,
+    ArchitectureDimension,
+    ArchitectureQuestion,
+    ArchitectureState,
+    BoundaryPosition,
+    ComponentType,
+    DependencyState,
+    InformationFlow,
+    SolutionArchitecture,
+)
 from sales_lab.domain.business_process import (
     BusinessProcess,
     DecisionPoint,
@@ -682,3 +699,290 @@ def harbor_street_music_solution_options() -> SolutionOptionSet:
             "Who can approve spending if a future option requires it?",
         ),
     )
+
+
+def harbor_street_music_architectures() -> tuple[SolutionArchitecture, ...]:
+    """Return two logical candidates grounded in Chapter 8 approach identifiers."""
+    actors = (
+        ArchitectureActor("ACT-PROSPECT", "Prospective Student / Parent", "prospective-student"),
+        ArchitectureActor("ACT-STAFF", "Authorized Staff", "staff"),
+        ArchitectureActor("ACT-INSTRUCTOR", "Music Instructor", "instructor"),
+    )
+    goals = (
+        "Maintain visible lesson-inquiry status.",
+        "Make confirmed schedule information available to instructors.",
+        "Preserve the unapproved-software-budget constraint during evaluation.",
+    )
+    common_questions = (
+        ArchitectureQuestion("Q-ARCH-001", "What access controls do current tools support?"),
+        ArchitectureQuestion("Q-ARCH-002", "What calendar integration mechanism, if any, exists?"),
+    )
+    existing = SolutionArchitecture(
+        "ARCH-001",
+        "Existing-Tool Enhancement",
+        harbor_street_music_capability_map().engagement,
+        ("APP-001", "APP-002", "APP-003"),
+        goals,
+        actors,
+        (
+            ArchitectureComponent(
+                "CMP-CAPTURE",
+                "Standardized Inquiry Capture",
+                ComponentType.USER_INTERFACE,
+                BoundaryPosition.INSIDE,
+                ("CAP-003",),
+                ("REQ-001",),
+            ),
+            ArchitectureComponent(
+                "CMP-SHEET",
+                "Configured Existing Spreadsheet",
+                ComponentType.DATA,
+                BoundaryPosition.INSIDE,
+                ("CAP-001", "CAP-003"),
+                ("REQ-001",),
+                ("REQ-003",),
+            ),
+            ArchitectureComponent(
+                "CMP-FOLLOWUP",
+                "Defined Staff Follow-Up Workflow",
+                ComponentType.WORKFLOW,
+                BoundaryPosition.INSIDE,
+                ("CAP-001",),
+                ("REQ-001",),
+            ),
+            ArchitectureComponent(
+                "CMP-CALENDAR",
+                "Existing Calendar",
+                ComponentType.EXTERNAL_SYSTEM,
+                BoundaryPosition.EXTERNAL,
+                ("CAP-002",),
+                ("REQ-002",),
+                necessity="Established current resource",
+            ),
+            ArchitectureComponent(
+                "CMP-EVALUATION",
+                "Constraint-Aware Option Review",
+                ComponentType.REPORTING,
+                BoundaryPosition.INSIDE,
+                ("CAP-004",),
+                ("REQ-003",),
+                ("REQ-003",),
+            ),
+        ),
+        (
+            ArchitectureConnection("CON-001", "ACT-PROSPECT", "CMP-CAPTURE"),
+            ArchitectureConnection("CON-002", "CMP-CAPTURE", "CMP-SHEET"),
+            ArchitectureConnection("CON-003", "CMP-SHEET", "CMP-FOLLOWUP"),
+            ArchitectureConnection("CON-004", "CMP-FOLLOWUP", "CMP-CALENDAR"),
+            ArchitectureConnection("CON-005", "CMP-CALENDAR", "ACT-INSTRUCTOR"),
+            ArchitectureConnection("CON-006", "ACT-STAFF", "CMP-SHEET"),
+            ArchitectureConnection("CON-007", "ACT-STAFF", "CMP-EVALUATION"),
+        ),
+        (
+            InformationFlow(
+                "FLOW-001", "CON-001", "Lesson Inquiry", "Capture a prospective student's request."
+            ),
+            InformationFlow(
+                "FLOW-002", "CON-002", "Inquiry Record", "Maintain shared inquiry information."
+            ),
+            InformationFlow(
+                "FLOW-003",
+                "CON-003",
+                "Inquiry Status and Contact History",
+                "Guide staff follow-up.",
+            ),
+            InformationFlow(
+                "FLOW-004",
+                "CON-004",
+                "Confirmed Appointment",
+                "Record confirmed schedule information.",
+                "DEP-CALENDAR",
+            ),
+            InformationFlow(
+                "FLOW-005",
+                "CON-005",
+                "Instructor Schedule Information",
+                "Make confirmed schedules visible.",
+            ),
+            InformationFlow(
+                "FLOW-006",
+                "CON-006",
+                "Status Updates",
+                "Allow authorized staff to maintain status.",
+            ),
+            InformationFlow(
+                "FLOW-007", "CON-007", "Budget Constraint", "Keep evaluation constraint-aware."
+            ),
+        ),
+        (
+            ArchitectureDependency(
+                "DEP-CALENDAR",
+                (
+                    "Calendar interface availability is not yet established; unknown does not "
+                    "mean impossible."
+                ),
+                DependencyState.UNKNOWN,
+            ),
+        ),
+        (
+            ArchitectureAssumption(
+                "ASM-001", "The spreadsheet can represent a consistent inquiry status."
+            ),
+        ),
+        (
+            ArchitectureDecision(
+                "ADR-001",
+                "Represent inquiry status as a distinct logical responsibility.",
+                "REQ-001 and CAP-001 depend on maintaining inquiry state.",
+                ("Keep status implicit in notes.",),
+            ),
+        ),
+        common_questions,
+        (
+            ArchitectureComparison(
+                ArchitectureDimension.CHANGE_SCOPE,
+                ArchitectureState.LOW,
+                "This candidate emphasizes current resources.",
+            ),
+            ArchitectureComparison(
+                ArchitectureDimension.INTEGRATION_DEPENDENCY,
+                ArchitectureState.UNKNOWN,
+                "Current calendar interface feasibility is unestablished.",
+            ),
+            ArchitectureComparison(
+                ArchitectureDimension.CUSTOM_DEVELOPMENT,
+                ArchitectureState.LOW,
+                "No custom application is assumed.",
+            ),
+        ),
+    )
+    unified = SolutionArchitecture(
+        "ARCH-002",
+        "Unified Application",
+        harbor_street_music_capability_map().engagement,
+        ("APP-005",),
+        goals,
+        actors,
+        (
+            ArchitectureComponent(
+                "CMP-PORTAL",
+                "Staff Access",
+                ComponentType.USER_INTERFACE,
+                BoundaryPosition.INSIDE,
+                ("CAP-003",),
+                ("REQ-001", "REQ-002"),
+            ),
+            ArchitectureComponent(
+                "CMP-INQUIRY",
+                "Inquiry Management",
+                ComponentType.DATA,
+                BoundaryPosition.INSIDE,
+                ("CAP-001",),
+                ("REQ-001",),
+            ),
+            ArchitectureComponent(
+                "CMP-WORKFLOW",
+                "Follow-Up Tracking",
+                ComponentType.WORKFLOW,
+                BoundaryPosition.INSIDE,
+                ("CAP-001", "CAP-003"),
+                ("REQ-001",),
+            ),
+            ArchitectureComponent(
+                "CMP-SCHEDULE",
+                "Lesson Scheduling",
+                ComponentType.WORKFLOW,
+                BoundaryPosition.INSIDE,
+                ("CAP-002",),
+                ("REQ-002",),
+            ),
+            ArchitectureComponent(
+                "CMP-INSTRUCTOR",
+                "Instructor Schedule View",
+                ComponentType.USER_INTERFACE,
+                BoundaryPosition.INSIDE,
+                ("CAP-002", "CAP-003"),
+                ("REQ-002",),
+            ),
+            ArchitectureComponent(
+                "CMP-CONTROL",
+                "Constraint-Aware Option Review",
+                ComponentType.REPORTING,
+                BoundaryPosition.INSIDE,
+                ("CAP-004",),
+                ("REQ-003",),
+                ("REQ-003",),
+            ),
+        ),
+        (
+            ArchitectureConnection("CON-U01", "ACT-PROSPECT", "CMP-INQUIRY"),
+            ArchitectureConnection("CON-U02", "CMP-INQUIRY", "CMP-WORKFLOW"),
+            ArchitectureConnection("CON-U03", "ACT-STAFF", "CMP-PORTAL"),
+            ArchitectureConnection("CON-U04", "CMP-PORTAL", "CMP-WORKFLOW"),
+            ArchitectureConnection("CON-U05", "CMP-WORKFLOW", "CMP-SCHEDULE"),
+            ArchitectureConnection("CON-U06", "CMP-SCHEDULE", "CMP-INSTRUCTOR"),
+            ArchitectureConnection("CON-U07", "CMP-INSTRUCTOR", "ACT-INSTRUCTOR"),
+            ArchitectureConnection("CON-U08", "ACT-STAFF", "CMP-CONTROL"),
+        ),
+        (
+            InformationFlow("FLOW-U01", "CON-U01", "Lesson Inquiry", "Capture the inquiry."),
+            InformationFlow("FLOW-U02", "CON-U02", "Inquiry Record", "Start tracked follow-up."),
+            InformationFlow(
+                "FLOW-U03", "CON-U03", "Authorized Staff Interaction", "Access shared information."
+            ),
+            InformationFlow(
+                "FLOW-U04",
+                "CON-U04",
+                "Inquiry Status and Contact History",
+                "Maintain follow-up state.",
+            ),
+            InformationFlow(
+                "FLOW-U05",
+                "CON-U05",
+                "Confirmed Appointment",
+                "Pass confirmed details to scheduling.",
+            ),
+            InformationFlow(
+                "FLOW-U06", "CON-U06", "Schedule Information", "Present confirmed lessons."
+            ),
+            InformationFlow(
+                "FLOW-U07", "CON-U07", "Instructor Schedule Information", "Inform the instructor."
+            ),
+            InformationFlow(
+                "FLOW-U08", "CON-U08", "Budget Constraint", "Keep evaluation constraint-aware."
+            ),
+        ),
+        (),
+        (
+            ArchitectureAssumption(
+                "ASM-002", "Custom delivery and maintenance capacity could be available."
+            ),
+        ),
+        (
+            ArchitectureDecision(
+                "ADR-002",
+                "Separate follow-up tracking from lesson scheduling.",
+                "Inquiry state and confirmed schedule serve distinct established requirements.",
+                ("Treat both as one undifferentiated record.",),
+            ),
+        ),
+        common_questions,
+        (
+            ArchitectureComparison(
+                ArchitectureDimension.CHANGE_SCOPE,
+                ArchitectureState.HIGH,
+                "A unified application changes several responsibilities.",
+            ),
+            ArchitectureComparison(
+                ArchitectureDimension.INTEGRATION_DEPENDENCY,
+                ArchitectureState.LOW,
+                "No external integration is assumed in this logical candidate.",
+            ),
+            ArchitectureComparison(
+                ArchitectureDimension.CUSTOM_DEVELOPMENT,
+                ArchitectureState.HIGH,
+                "APP-005 explicitly explores custom software.",
+            ),
+        ),
+    )
+    return existing, unified
