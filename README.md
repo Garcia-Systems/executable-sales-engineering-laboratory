@@ -103,12 +103,11 @@ Every change is checked with Ruff, MyPy in strict mode, pytest, and branch cover
 commands on Python 3.13. The project targets 100% coverage for its current executable foundation.
 
 ```console
-uv run ruff format --check .
-uv run ruff check .
-uv run mypy
-uv run pytest
-uv run pre-commit run --all-files
+./scripts/check.sh
 ```
+
+See [Before opening a pull request](CONTRIBUTING.md#before-opening-a-pull-request) for environment
+setup, individual troubleshooting commands, and the GitHub Actions check contributors must pass.
 
 Simulations use explicit inputs and stable ordering. Randomness, predictive models,
 LLM dependencies, external services, and network-dependent behavior are outside the project scope.

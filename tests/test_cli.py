@@ -1,10 +1,26 @@
 """Tests for the command-line interface."""
 
+import subprocess
+from shutil import which
+
 from typer.testing import CliRunner
 
 from sales_lab.cli import app
 
 runner = CliRunner()
+
+
+def test_installed_cli_entry_point_runs() -> None:
+    """The packaged console script can execute a harmless command."""
+    executable = which("sales-lab")
+    assert executable is not None
+    result = subprocess.run(  # noqa: S603 - path is resolved from the installed environment.
+        [executable, "info"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert "Executable Sales Engineering Laboratory" in result.stdout
 
 
 def test_info_describes_the_laboratory() -> None:
@@ -46,9 +62,9 @@ def test_situation_prints_report_without_recommendation() -> None:
     assert "CRM" not in result.stdout
 
 
-def test_root_command_displays_help() -> None:
+def test_root_help_displays_scenario_command() -> None:
     """Root help exposes the scenario command."""
-    result = runner.invoke(app)
+    result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
     assert "Usage" in result.stdout
     assert "situation" in result.stdout
