@@ -19,3 +19,5 @@ All notable changes to this project will be documented in this file. The format 
 - Chapter 4 immutable stakeholder roles, evidence-linked responsibilities and process participation,
   explicit authority unknowns, perspective-gap questions, matrix, Mermaid diagram, report,
   `sales-lab stakeholders` command, tests, documentation, and debugging laboratory.
+- Chapter 5 immutable requirements, acceptance criteria, evidence validation, explicit unknowns,
+  traceability matrix, Mermaid diagram, report, `sales-lab requirements`, tests, and debugging laboratory.
