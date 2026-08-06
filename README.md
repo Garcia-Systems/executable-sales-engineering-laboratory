@@ -8,7 +8,7 @@ An **executable textbook for learning Sales Engineering through deterministic si
 
 This repository will connect the craft of technical discovery, solution design, demonstration,
 validation, and communication to small programs that readers can run, inspect, test, and change.
-Chapter 0 now provides the first immutable customer-situation model and executable report.
+Chapters 0–2 now progress from immutable customer facts through evidence classification to a structured discovery meeting and report.
 
 ## Vision
 
@@ -70,6 +70,8 @@ uv run sales-lab info
 uv run sales-lab chapters
 uv run sales-lab examples
 uv run sales-lab situation
+uv run sales-lab investigate
+uv run sales-lab discovery
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -118,6 +120,7 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Define the Chapter 0 interface and curriculum entry point.
 - [x] Introduce an immutable customer situation and deterministic summary.
 - [x] Add a reproducible Markdown report and Chapter 0 diagram.
+- [x] Add a deterministic Chapter 2 discovery workflow and evidence-bounded meeting summary.
 - [ ] Expand the example catalog and cross-chapter capstone exercises.
 
 The unchecked item describes direction, not a promise of scope or delivery date. Discovery,
