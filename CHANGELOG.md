@@ -13,3 +13,5 @@ All notable changes to this project will be documented in this file. The format 
 - Automated linting, formatting, typing, tests, coverage, and continuous integration.
 - Chapter 0, its immutable `CustomerSituation`, Harbor Street Music fixture, structured summary,
   Markdown report, `sales-lab situation` command, tests, and debugging entry point.
+- Chapter 2 discovery meeting domain objects, question catalog, deterministic workflow, report,
+  CLI command, diagram, tests, documentation, and debugging exercise.
