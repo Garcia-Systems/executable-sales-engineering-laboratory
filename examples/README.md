@@ -63,3 +63,8 @@ Run `python examples/debug_chapter_9.py` or select **Debug Chapter 9 Architectur
 Follow requirement and capability links into components, connections, information flows, coverage,
 unjustified-component findings, and unknown dependencies. The experiment helpers return new frozen
 candidates rather than mutating the canonical architectures.
+
+
+## Chapter 10 debugging laboratory
+
+Run `python examples/debug_chapter_10.py` or select **Debug Chapter 10 Integrations** in VS Code. Follow the Chapter 9 information flow through patterns, data, dependencies, assumptions, feasibility, failures, and duplicate delivery.

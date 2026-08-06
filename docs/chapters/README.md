@@ -10,5 +10,6 @@
 7. [Current Capabilities & Gap Analysis](07-current-capabilities-gap-analysis.md)
 8. [Solution Approaches](08-solution-approaches.md)
 9. [Future-State Solution Architecture](09-future-state-solution-architecture.md)
+10. [Integration Strategies](10-integration-strategies.md)
 
 Later chapters will extend this foundation; they are intentionally not implemented yet.

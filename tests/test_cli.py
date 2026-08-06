@@ -42,6 +42,19 @@ def test_chapters_lists_chapter_zero() -> None:
     assert "7. Current Capabilities & Gap Analysis" in result.stdout
     assert "8. Solution Approaches" in result.stdout
     assert "9. Future-State Solution Architecture" in result.stdout
+    assert "10. Integration Strategies" in result.stdout
+
+
+def test_integrations_prints_candidates_unknown_interfaces_and_traceability() -> None:
+    """Chapter 10 CLI preserves uncertainty and does not select a pattern."""
+    result = runner.invoke(app, ["integrations"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("# Integration Strategy Analysis")
+    assert "## 5. Pattern Comparison" in result.stdout
+    assert "Unverified External Interface" not in result.stdout
+    assert "Requires validation" in result.stdout
+    assert "FLOW-004 → INT-003" in result.stdout
+    assert "recommended pattern" not in result.stdout.lower()
 
 
 def test_architecture_prints_candidates_coverage_traceability_and_unknowns() -> None:
