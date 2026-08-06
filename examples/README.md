@@ -16,3 +16,11 @@ Run `python examples/debug_chapter_1.py` and use the marked breakpoint locations
 Run `python examples/debug_chapter_2.py` and follow its five marked breakpoints to inspect an
 immutable meeting as questions, responses, and sourced evidence are appended in chronological
 order before the deterministic Markdown summary is rendered.
+
+## Chapter 3 debugging laboratory
+
+Run `python examples/debug_chapter_3.py`. Suggested breakpoints are marked at process creation,
+transition inspection, validation, Mermaid generation, and report generation. Important variables
+are `process.steps`, `transitions`, `model.terminal_steps`, `model.unknown_steps`, and `mermaid`.
+Frozen dataclasses and tuples must remain unchanged; repeated runs must produce identical node
+aliases, transition order, unknown markers, and Markdown.

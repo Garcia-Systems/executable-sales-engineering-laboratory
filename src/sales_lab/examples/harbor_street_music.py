@@ -1,5 +1,14 @@
 """Reusable Chapter 0 customer-supplied facts."""
 
+from sales_lab.domain.business_process import (
+    BusinessProcess,
+    DecisionPoint,
+    InformationArtifact,
+    ProcessActor,
+    ProcessBoundary,
+    ProcessStep,
+    WorkflowTransition,
+)
 from sales_lab.domain.customer_situation import CustomerSituation
 from sales_lab.domain.discovery import (
     Assumption,
@@ -98,3 +107,45 @@ def harbor_street_music_discovery_meeting() -> DiscoveryMeeting:
     for fact in facts:
         meeting = capture_evidence(meeting, EvidenceRecord(fact, "Morgan Lee, discovery meeting"))
     return meeting
+
+
+def harbor_street_music_business_process() -> BusinessProcess:
+    """Return the documented Chapter 3 process, preserving its explicit unknown ending."""
+    return BusinessProcess(
+        name="Harbor Street Music lesson inquiry process",
+        purpose="Record and respond to lesson inquiries through acceptance or decline.",
+        actors=(
+            ProcessActor("student", "Prospective student"),
+            ProcessActor("staff", "Harbor Street Music staff"),
+        ),
+        steps=(
+            ProcessStep("inquiry", "Student submits a lesson inquiry", "student"),
+            ProcessStep("spreadsheet", "Inquiry is entered into the shared spreadsheet", "staff"),
+            ProcessStep("review", "Staff reviews the shared spreadsheet", "staff"),
+            ProcessStep("contact", "Staff contacts the prospective student", "staff"),
+            ProcessStep("decision", "Student accepts or declines", "student"),
+            ProcessStep("calendar", "Confirmed lesson is copied into a separate calendar", "staff"),
+            ProcessStep(
+                "declined-unknown",
+                "What happens after the student declines is not documented",
+                is_unknown=True,
+            ),
+        ),
+        decisions=(DecisionPoint("decision", "Does the student accept the lesson?"),),
+        artifacts=(
+            InformationArtifact("inquiry-record", "Lesson inquiry", ("inquiry", "spreadsheet")),
+            InformationArtifact(
+                "shared-spreadsheet", "Shared spreadsheet", ("spreadsheet", "review")
+            ),
+            InformationArtifact("lesson-calendar", "Separate calendar", ("calendar",)),
+        ),
+        boundary=ProcessBoundary("inquiry", ("calendar", "declined-unknown")),
+        transitions=(
+            WorkflowTransition("inquiry", "spreadsheet"),
+            WorkflowTransition("spreadsheet", "review"),
+            WorkflowTransition("review", "contact"),
+            WorkflowTransition("contact", "decision"),
+            WorkflowTransition("decision", "calendar", "Accepts"),
+            WorkflowTransition("decision", "declined-unknown", "Declines", is_unknown=True),
+        ),
+    )
