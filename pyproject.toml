@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "executable-sales-engineering-laboratory"
+version = "0.1.0"
+description = "An executable textbook for learning Sales Engineering through deterministic simulations."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+authors = [{ name = "Executable Sales Engineering Laboratory contributors" }]
+keywords = ["sales-engineering", "education", "simulation", "executable-textbook"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Education",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
+  "Typing :: Typed",
+]
+dependencies = ["typer>=0.16,<1"]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.17,<2",
+  "pre-commit>=4.2,<5",
+  "pytest>=8.4,<9",
+  "pytest-cov>=6.2,<8",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+sales-lab = "sales_lab.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/executable-laboratories/executable-sales-engineering-laboratory"
+Issues = "https://github.com/executable-laboratories/executable-sales-engineering-laboratory/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sales_lab"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "COM812", # Conflicts with the formatter.
+  "D203",   # Prefer D211: no blank line before class docstrings.
+  "D213",   # Prefer D212: summary on the first line.
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers --cov=sales_lab --cov-report=term-missing --cov-report=xml --cov-fail-under=100"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["sales_lab"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 100
+
