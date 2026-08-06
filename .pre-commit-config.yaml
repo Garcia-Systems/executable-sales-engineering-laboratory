@@ -3,8 +3,9 @@ repos:
     rev: v0.12.11
     hooks:
       - id: ruff-check
-        args: [--fix]
+        args: [--no-fix]
       - id: ruff-format
+        args: [--check]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
@@ -14,4 +15,3 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
-

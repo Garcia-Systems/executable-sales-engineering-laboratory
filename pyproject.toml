@@ -24,6 +24,7 @@ dependencies = ["typer>=0.16,<1"]
 
 [project.optional-dependencies]
 dev = [
+  "build>=1.3,<2",
   "mypy>=1.17,<2",
   "pre-commit>=4.2,<5",
   "pytest>=8.4,<9",
@@ -74,4 +75,3 @@ source = ["sales_lab"]
 show_missing = true
 skip_covered = true
 fail_under = 100
-
