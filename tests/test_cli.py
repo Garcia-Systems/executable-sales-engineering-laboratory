@@ -20,6 +20,7 @@ def test_chapters_lists_chapter_zero() -> None:
     result = runner.invoke(app, ["chapters"])
     assert result.exit_code == 0
     assert "0. Setting Up the Sales Engineering Laboratory" in result.stdout
+    assert "1. Customer Problems vs. Customer Symptoms" in result.stdout
 
 
 def test_examples_lists_harbor_street_music() -> None:
@@ -51,3 +52,13 @@ def test_root_command_displays_help() -> None:
     assert result.exit_code == 0
     assert "Usage" in result.stdout
     assert "situation" in result.stdout
+
+
+def test_investigate_prints_initial_discovery_assessment() -> None:
+    """The Chapter 1 command prints the fixed evidence-bounded report."""
+    result = runner.invoke(app, ["investigate"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("# Initial Discovery Assessment")
+    assert "Students keep slipping through the cracks." in result.stdout
+    assert "## Known Facts" in result.stdout
+    assert "No product, solution, outcome, score, or recommendation is generated." in result.stdout

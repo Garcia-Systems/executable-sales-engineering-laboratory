@@ -4,8 +4,15 @@ from typing import Annotated
 
 import typer
 
-from sales_lab.examples.harbor_street_music import harbor_street_music_situation
-from sales_lab.reports.markdown import render_situation_summary
+from sales_lab.examples.harbor_street_music import (
+    harbor_street_music_discovery,
+    harbor_street_music_situation,
+)
+from sales_lab.reports.markdown import (
+    render_initial_discovery_assessment,
+    render_situation_summary,
+)
+from sales_lab.services.investigation import build_initial_discovery_assessment
 from sales_lab.services.situation_summary import build_situation_summary
 
 app = typer.Typer(
@@ -27,7 +34,11 @@ def info() -> None:
 @app.command()
 def chapters() -> None:
     """List the educational chapters available in the laboratory."""
-    typer.echo("Chapters\n0. Setting Up the Sales Engineering Laboratory")
+    typer.echo(
+        "Chapters\n"
+        "0. Setting Up the Sales Engineering Laboratory\n"
+        "1. Customer Problems vs. Customer Symptoms"
+    )
 
 
 @app.command()
@@ -50,6 +61,13 @@ def situation() -> None:
     """Print the deterministic Chapter 0 customer situation."""
     summary = build_situation_summary(harbor_street_music_situation())
     typer.echo(render_situation_summary(summary), nl=False)
+
+
+@app.command()
+def investigate() -> None:
+    """Print the deterministic Chapter 1 initial discovery assessment."""
+    assessment = build_initial_discovery_assessment(harbor_street_music_discovery())
+    typer.echo(render_initial_discovery_assessment(assessment), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.
