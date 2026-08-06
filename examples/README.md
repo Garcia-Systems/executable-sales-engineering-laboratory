@@ -1,5 +1,8 @@
 # Examples
 
-Future deterministic, standalone examples will live here. No domain examples are included in the
-foundation release.
+`debug_chapter_0.py` is a learner-owned entry point for inspecting the immutable Harbor Street Music
+facts, structured summary, and rendered report. Run it from the repository root after installation:
 
+```console
+python examples/debug_chapter_0.py
+```
