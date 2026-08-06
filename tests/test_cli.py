@@ -38,6 +38,18 @@ def test_chapters_lists_chapter_zero() -> None:
     assert "0. Setting Up the Sales Engineering Laboratory" in result.stdout
     assert "1. Customer Problems vs. Customer Symptoms" in result.stdout
     assert "3. Business Process Modeling" in result.stdout
+    assert "6. Capability Mapping" in result.stdout
+
+
+def test_capabilities_prints_vendor_neutral_analysis() -> None:
+    """The Chapter 6 command exposes mappings, coverage, gaps, and guardrails."""
+    result = runner.invoke(app, ["capabilities"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("# Capability Mapping Analysis")
+    assert "## Capability Gaps" in result.stdout
+    assert "## Unsupported Capabilities" in result.stdout
+    assert "Inquiry Status Tracking" in result.stdout
+    assert "Salesforce" not in result.stdout
 
 
 def test_examples_lists_harbor_street_music() -> None:

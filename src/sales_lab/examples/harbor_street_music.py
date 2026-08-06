@@ -9,6 +9,12 @@ from sales_lab.domain.business_process import (
     ProcessStep,
     WorkflowTransition,
 )
+from sales_lab.domain.capabilities import (
+    Capability,
+    CapabilityCategory,
+    CapabilityMap,
+    CapabilityRequirementLink,
+)
 from sales_lab.domain.customer_situation import CustomerSituation
 from sales_lab.domain.discovery import (
     Assumption,
@@ -365,5 +371,51 @@ def harbor_street_music_requirements() -> RequirementSet:
         unresolved=tuple(
             UnresolvedRequirement(area, RequirementStatus.UNKNOWN)
             for area in ("Authentication", "Retention", "Availability", "Integration")
+        ),
+    )
+
+
+def harbor_street_music_capability_map() -> CapabilityMap:
+    """Map the exact Chapter 5 requirement identifiers to explicit neutral capabilities."""
+    return CapabilityMap(
+        engagement=harbor_street_music_requirements().engagement,
+        capabilities=(
+            Capability(
+                "CAP-001",
+                "Inquiry Status Tracking",
+                "Maintain shared visibility of an active lesson inquiry's current status.",
+                CapabilityCategory.INFORMATION,
+            ),
+            Capability(
+                "CAP-002",
+                "Confirmed Lesson Schedule Visibility",
+                "Make recorded confirmed lesson schedule information visible to instructors.",
+                CapabilityCategory.INFORMATION,
+            ),
+            Capability(
+                "CAP-003",
+                "Inquiry Information Sharing",
+                "Share relevant inquiry and confirmed-lesson information across authorized roles.",
+                CapabilityCategory.COLLABORATION,
+            ),
+            Capability(
+                "CAP-004",
+                "Constraint-Aware Option Evaluation",
+                "Evaluate future options while preserving the unapproved-budget constraint.",
+                CapabilityCategory.CONTROL,
+            ),
+        ),
+        links=(
+            CapabilityRequirementLink("CAP-001", "REQ-001"),
+            CapabilityRequirementLink("CAP-003", "REQ-001"),
+            CapabilityRequirementLink("CAP-002", "REQ-002"),
+            CapabilityRequirementLink("CAP-003", "REQ-002"),
+            CapabilityRequirementLink("CAP-004", "REQ-003"),
+        ),
+        open_questions=(
+            "Do the explicitly unresolved authentication, retention, availability, or integration "
+            "areas justify future capabilities?",
+            "What existing organizational capabilities already satisfy any part of these "
+            "requirements?",
         ),
     )
