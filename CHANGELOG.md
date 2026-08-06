@@ -24,3 +24,6 @@ All notable changes to this project will be documented in this file. The format 
 - Chapter 6 immutable vendor-neutral capabilities, many-to-many requirement mapping, qualitative
   coverage and gap validation, matrices, traceability, report, Mermaid diagram, `sales-lab
   capabilities`, solution-first experiment, tests, documentation, and debugging laboratory.
+- Chapter 7 immutable current-resource inventory, evidence-based capability states and gap types,
+  deterministic analysis, matrix, traceability report, Mermaid diagram, `sales-lab gaps`, immutable
+  evidence experiment, tests, documentation, and debugging laboratory.

@@ -7,5 +7,6 @@
 4. [Stakeholder Analysis](04-stakeholder-analysis.md)
 5. [Requirements Engineering](05-requirements-engineering.md)
 6. [Capability Mapping](06-capability-mapping.md)
+7. [Current Capabilities & Gap Analysis](07-current-capabilities-gap-analysis.md)
 
 Later chapters will extend this foundation; they are intentionally not implemented yet.

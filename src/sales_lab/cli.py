@@ -8,6 +8,7 @@ from sales_lab.diagrams.business_process import render_process_mermaid
 from sales_lab.examples.harbor_street_music import (
     harbor_street_music_business_process,
     harbor_street_music_capability_map,
+    harbor_street_music_current_capability_inventory,
     harbor_street_music_discovery,
     harbor_street_music_discovery_meeting,
     harbor_street_music_requirements,
@@ -16,6 +17,7 @@ from sales_lab.examples.harbor_street_music import (
 )
 from sales_lab.reports.business_process import render_business_process_report
 from sales_lab.reports.capabilities import render_capability_report
+from sales_lab.reports.gaps import render_gap_report
 from sales_lab.reports.markdown import (
     render_discovery_meeting_summary,
     render_initial_discovery_assessment,
@@ -26,6 +28,7 @@ from sales_lab.reports.stakeholders import render_stakeholder_report
 from sales_lab.services.business_process import validate_business_process
 from sales_lab.services.capabilities import analyze_capabilities
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
+from sales_lab.services.gaps import analyze_gaps
 from sales_lab.services.investigation import build_initial_discovery_assessment
 from sales_lab.services.requirements import analyze_requirements
 from sales_lab.services.situation_summary import build_situation_summary
@@ -59,6 +62,7 @@ def chapters() -> None:
         "\n4. Stakeholder Analysis"
         "\n5. Requirements Engineering"
         "\n6. Capability Mapping"
+        "\n7. Current Capabilities & Gap Analysis"
     )
 
 
@@ -144,6 +148,18 @@ def capabilities() -> None:
         harbor_street_music_capability_map(),
     )
     typer.echo(render_capability_report(analysis), nl=False)
+
+
+@app.command()
+def gaps() -> None:
+    """Print the Chapter 7 evidence-based current capability gap analysis."""
+    required = analyze_capabilities(
+        harbor_street_music_requirements(),
+        harbor_street_music_stakeholder_map(),
+        harbor_street_music_capability_map(),
+    )
+    analysis = analyze_gaps(required, harbor_street_music_current_capability_inventory())
+    typer.echo(render_gap_report(analysis), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.

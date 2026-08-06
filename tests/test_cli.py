@@ -39,6 +39,7 @@ def test_chapters_lists_chapter_zero() -> None:
     assert "1. Customer Problems vs. Customer Symptoms" in result.stdout
     assert "3. Business Process Modeling" in result.stdout
     assert "6. Capability Mapping" in result.stdout
+    assert "7. Current Capabilities & Gap Analysis" in result.stdout
 
 
 def test_capabilities_prints_vendor_neutral_analysis() -> None:
@@ -50,6 +51,17 @@ def test_capabilities_prints_vendor_neutral_analysis() -> None:
     assert "## Unsupported Capabilities" in result.stdout
     assert "Inquiry Status Tracking" in result.stdout
     assert "Salesforce" not in result.stdout
+
+
+def test_gaps_prints_current_capability_analysis_without_recommendations() -> None:
+    """The Chapter 7 command exposes states, gaps, unknowns, and investigation questions."""
+    result = runner.invoke(app, ["gaps"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("# Current Capability & Gap Analysis")
+    assert "## Partial Capabilities" in result.stdout
+    assert "## Unknown Capabilities" in result.stdout
+    assert "Does the spreadsheet contain a defined inquiry-status field" in result.stdout
+    assert "Buy CRM" not in result.stdout
 
 
 def test_examples_lists_harbor_street_music() -> None:
