@@ -37,6 +37,7 @@ def test_chapters_lists_chapter_zero() -> None:
     assert result.exit_code == 0
     assert "0. Setting Up the Sales Engineering Laboratory" in result.stdout
     assert "1. Customer Problems vs. Customer Symptoms" in result.stdout
+    assert "3. Business Process Modeling" in result.stdout
 
 
 def test_examples_lists_harbor_street_music() -> None:
@@ -78,3 +79,14 @@ def test_investigate_prints_initial_discovery_assessment() -> None:
     assert "Students keep slipping through the cracks." in result.stdout
     assert "## Known Facts" in result.stdout
     assert "No product, solution, outcome, score, or recommendation is generated." in result.stdout
+
+
+def test_process_prints_summary_mermaid_and_current_state_report() -> None:
+    """The Chapter 3 command presents all three deterministic outputs."""
+    result = runner.invoke(app, ["process"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("Workflow Summary")
+    assert "flowchart TD" in result.stdout
+    assert "# Current-State Business Process" in result.stdout
+    assert "Unknown: What happens after the student declines" in result.stdout
+    assert "software recommendation" in result.stdout

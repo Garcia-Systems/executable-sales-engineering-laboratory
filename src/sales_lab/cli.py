@@ -4,16 +4,20 @@ from typing import Annotated
 
 import typer
 
+from sales_lab.diagrams.business_process import render_process_mermaid
 from sales_lab.examples.harbor_street_music import (
+    harbor_street_music_business_process,
     harbor_street_music_discovery,
     harbor_street_music_discovery_meeting,
     harbor_street_music_situation,
 )
+from sales_lab.reports.business_process import render_business_process_report
 from sales_lab.reports.markdown import (
     render_discovery_meeting_summary,
     render_initial_discovery_assessment,
     render_situation_summary,
 )
+from sales_lab.services.business_process import validate_business_process
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
 from sales_lab.services.investigation import build_initial_discovery_assessment
 from sales_lab.services.situation_summary import build_situation_summary
@@ -41,7 +45,8 @@ def chapters() -> None:
         "Chapters\n"
         "0. Setting Up the Sales Engineering Laboratory\n"
         "1. Customer Problems vs. Customer Symptoms\n"
-        "2. Discovery Meetings"
+        "2. Discovery Meetings\n"
+        "3. Business Process Modeling"
     )
 
 
@@ -80,6 +85,24 @@ def discovery() -> None:
     meeting = harbor_street_music_discovery_meeting()
     summary = build_discovery_meeting_summary(meeting)
     typer.echo(render_discovery_meeting_summary(summary), nl=False)
+
+
+@app.command()
+def process() -> None:
+    """Print the Chapter 3 current-state workflow, Mermaid diagram, and report."""
+    model = validate_business_process(harbor_street_music_business_process())
+    terminal_names = ", ".join(step.description for step in model.terminal_steps)
+    typer.echo(
+        "Workflow Summary\n"
+        f"Process: {model.process.name}\n"
+        f"Start: {model.start_step.description}\n"
+        f"Terminal steps: {terminal_names}\n\n"
+        "Mermaid Diagram\n"
+        "```mermaid\n"
+        f"{render_process_mermaid(model)}```\n\n"
+        f"{render_business_process_report(model)}",
+        nl=False,
+    )
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.
