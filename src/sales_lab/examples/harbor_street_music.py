@@ -28,6 +28,14 @@ from sales_lab.domain.discovery_meeting import (
     EvidenceRecord,
     MeetingParticipant,
 )
+from sales_lab.domain.gaps import (
+    CapabilityAssessment,
+    CapabilityState,
+    CurrentCapabilityInventory,
+    CurrentResource,
+    EvidenceReference,
+    GapType,
+)
 from sales_lab.domain.requirements import (
     AcceptanceCriterion,
     Requirement,
@@ -417,5 +425,95 @@ def harbor_street_music_capability_map() -> CapabilityMap:
             "areas justify future capabilities?",
             "What existing organizational capabilities already satisfy any part of these "
             "requirements?",
+        ),
+    )
+
+
+def harbor_street_music_current_capability_inventory() -> CurrentCapabilityInventory:
+    """Return Chapter 7 resources and assessments bounded by established evidence."""
+    stakeholder_evidence = {
+        item.identifier: item for item in harbor_street_music_stakeholder_map().evidence
+    }
+    evidence = tuple(
+        EvidenceReference(item.identifier, item.statement, item.source)
+        for item in (
+            stakeholder_evidence["E2"],
+            stakeholder_evidence["E4"],
+            stakeholder_evidence["E7"],
+        )
+    )
+    return CurrentCapabilityInventory(
+        harbor_street_music_capability_map().engagement,
+        (
+            CurrentResource(
+                "RES-001",
+                "Shared Lesson Inquiry Spreadsheet",
+                "The shared spreadsheet currently holds lesson inquiries.",
+                ("E2",),
+                "Does the spreadsheet contain a defined inquiry-status field used consistently?",
+            ),
+            CurrentResource(
+                "RES-002",
+                "Separate Lesson Calendar",
+                "Staff copy confirmed lessons into a separate calendar.",
+                ("E2",),
+                "Can music instructors view the confirmed lesson calendar, and who can edit it?",
+            ),
+            CurrentResource(
+                "RES-003",
+                "Manual Staff Follow-Up Process",
+                "Front desk staff contact prospective students using the current process.",
+                ("E2",),
+                "Does the current process retain who followed up and the follow-up history?",
+            ),
+            CurrentResource(
+                "RES-004",
+                "Established Budget-Constraint Knowledge",
+                "The unapproved software budget is an explicitly recorded constraint.",
+                ("E7",),
+            ),
+        ),
+        evidence,
+        (
+            CapabilityAssessment(
+                "CAP-001",
+                ("RES-001", "RES-003"),
+                CapabilityState.PARTIALLY_AVAILABLE,
+                ("E2",),
+                (
+                    "Inquiries and staff follow-up exist, but current-status tracking is not "
+                    "established."
+                ),
+                "Evidence does not establish a consistently maintained inquiry-status field.",
+                GapType.INFORMATION_GAP,
+                "Does the spreadsheet contain a defined inquiry-status field used consistently?",
+            ),
+            CapabilityAssessment(
+                "CAP-002",
+                ("RES-002",),
+                CapabilityState.UNKNOWN,
+                ("E2", "E4"),
+                "A calendar exists, but instructor access has not been established.",
+                "Discovery does not establish whether instructors can access the calendar.",
+                GapType.EVIDENCE_GAP,
+                "Can music instructors view the confirmed lesson calendar?",
+            ),
+            CapabilityAssessment(
+                "CAP-003",
+                ("RES-001", "RES-002", "RES-003"),
+                CapabilityState.PARTIALLY_AVAILABLE,
+                ("E2", "E4"),
+                "Staff share inquiry artifacts, but sharing across all required roles is unproven.",
+                "The consistency and reach of information sharing have not been established.",
+                GapType.PROCESS_GAP,
+                "Can staff and instructors determine who last contacted a prospective student?",
+            ),
+            CapabilityAssessment(
+                "CAP-004",
+                ("RES-004",),
+                CapabilityState.AVAILABLE,
+                ("E7",),
+                "The current record explicitly preserves the unapproved-budget constraint.",
+            ),
         ),
     )

@@ -43,3 +43,9 @@ Inspect the marked evidence-to-validation and traceability-matrix breakpoints.
 Run `python examples/debug_chapter_6.py` or select **Debug Chapter 6 Capabilities** in VS Code.
 Follow requirements through explicit mappings, traceability validation, qualitative coverage, and
 gap detection; then inspect the immutable unsupported-capability experiment.
+
+## Chapter 7 debugging laboratory
+
+Run `python examples/debug_chapter_7.py` or select **Debug Chapter 7 Gap Analysis** in VS Code.
+Inspect the required capability, current resources, evidence, assessment, gap type, and originating
+follow-up question without crossing into remedy selection.
