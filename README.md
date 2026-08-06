@@ -76,6 +76,7 @@ uv run sales-lab discovery
 uv run sales-lab process
 uv run sales-lab stakeholders
 uv run sales-lab requirements
+uv run sales-lab capabilities
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -128,6 +129,8 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Model the Chapter 3 current-state workflow with explicit boundaries, gaps, and Mermaid output.
 - [x] Map Chapter 4 roles, responsibilities, process participation, authority, and perspective gaps.
 - [x] Translate evidence into validated, traceable Chapter 5 requirements and explicit unknowns.
+- [x] Map Chapter 5 requirements to vendor-neutral Chapter 6 capabilities and explicit coverage gaps.
+- [ ] Assess existing capabilities and actual gaps in the next chapter.
 - [ ] Expand the example catalog and cross-chapter capstone exercises.
 
 The unchecked item describes direction, not a promise of scope or delivery date. Architecture, proposals, and customer-success systems remain future chapters.

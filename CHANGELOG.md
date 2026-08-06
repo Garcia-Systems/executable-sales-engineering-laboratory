@@ -21,3 +21,6 @@ All notable changes to this project will be documented in this file. The format 
   `sales-lab stakeholders` command, tests, documentation, and debugging laboratory.
 - Chapter 5 immutable requirements, acceptance criteria, evidence validation, explicit unknowns,
   traceability matrix, Mermaid diagram, report, `sales-lab requirements`, tests, and debugging laboratory.
+- Chapter 6 immutable vendor-neutral capabilities, many-to-many requirement mapping, qualitative
+  coverage and gap validation, matrices, traceability, report, Mermaid diagram, `sales-lab
+  capabilities`, solution-first experiment, tests, documentation, and debugging laboratory.

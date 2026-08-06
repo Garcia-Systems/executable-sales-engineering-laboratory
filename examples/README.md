@@ -37,3 +37,9 @@ immutable, and repeated output remains deterministic.
 
 Run `python examples/debug_chapter_5.py` or select **Debug Chapter 5 Requirements** in VS Code.
 Inspect the marked evidence-to-validation and traceability-matrix breakpoints.
+
+## Chapter 6 debugging laboratory
+
+Run `python examples/debug_chapter_6.py` or select **Debug Chapter 6 Capabilities** in VS Code.
+Follow requirements through explicit mappings, traceability validation, qualitative coverage, and
+gap detection; then inspect the immutable unsupported-capability experiment.

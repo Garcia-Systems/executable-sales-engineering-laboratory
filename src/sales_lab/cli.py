@@ -7,6 +7,7 @@ import typer
 from sales_lab.diagrams.business_process import render_process_mermaid
 from sales_lab.examples.harbor_street_music import (
     harbor_street_music_business_process,
+    harbor_street_music_capability_map,
     harbor_street_music_discovery,
     harbor_street_music_discovery_meeting,
     harbor_street_music_requirements,
@@ -14,6 +15,7 @@ from sales_lab.examples.harbor_street_music import (
     harbor_street_music_stakeholder_map,
 )
 from sales_lab.reports.business_process import render_business_process_report
+from sales_lab.reports.capabilities import render_capability_report
 from sales_lab.reports.markdown import (
     render_discovery_meeting_summary,
     render_initial_discovery_assessment,
@@ -22,6 +24,7 @@ from sales_lab.reports.markdown import (
 from sales_lab.reports.requirements import render_requirements_report
 from sales_lab.reports.stakeholders import render_stakeholder_report
 from sales_lab.services.business_process import validate_business_process
+from sales_lab.services.capabilities import analyze_capabilities
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
 from sales_lab.services.investigation import build_initial_discovery_assessment
 from sales_lab.services.requirements import analyze_requirements
@@ -55,6 +58,7 @@ def chapters() -> None:
         "3. Business Process Modeling"
         "\n4. Stakeholder Analysis"
         "\n5. Requirements Engineering"
+        "\n6. Capability Mapping"
     )
 
 
@@ -129,6 +133,17 @@ def requirements() -> None:
         harbor_street_music_requirements(), harbor_street_music_stakeholder_map()
     )
     typer.echo(render_requirements_report(analysis), nl=False)
+
+
+@app.command()
+def capabilities() -> None:
+    """Print the Chapter 6 vendor-neutral capability mapping analysis."""
+    analysis = analyze_capabilities(
+        harbor_street_music_requirements(),
+        harbor_street_music_stakeholder_map(),
+        harbor_street_music_capability_map(),
+    )
+    typer.echo(render_capability_report(analysis), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.
