@@ -12,5 +12,6 @@
 9. [Future-State Solution Architecture](09-future-state-solution-architecture.md)
 10. [Integration Strategies](10-integration-strategies.md)
 11. [Automation Opportunities and Human-in-the-Loop Design](11-automation-opportunities-and-human-in-the-loop-design.md)
+12. [Cost, Benefit, and Value Analysis](12-cost-benefit-and-value-analysis.md)
 
 Later chapters will extend this foundation; they are intentionally not implemented yet.
