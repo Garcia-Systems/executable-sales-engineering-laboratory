@@ -90,3 +90,9 @@ Run `python examples/debug_chapter_13.py` or select **Debug Chapter 13 Risks** i
 Run `python examples/debug_chapter_14.py` or select **Debug Chapter 14 Recommendation** in VS Code.
 Inspect explicit criteria, qualitative findings, mandatory conditions, evidence strength, tradeoffs,
 professional judgment, recommendation conditions, alternatives, and change triggers.
+
+## Chapter 15 debugging laboratory
+
+Run `python examples/debug_chapter_15.py` or select **Debug Chapter 15 Demonstration** in VS Code.
+Trace recommendation conditions through the objective, fictional scenario, ordered steps, immutable
+evidence, observations, findings, coverage, and limitations. The scheduling boundary remains simulated.

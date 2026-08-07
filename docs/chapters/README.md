@@ -15,5 +15,6 @@
 12. [Cost, Benefit, and Value Analysis](12-cost-benefit-and-value-analysis.md)
 13. [Risks, Assumptions, Dependencies, and Constraints](13-risks-assumptions-dependencies-and-constraints.md)
 14. [Transparent Decision Analysis and Recommendation](14-transparent-decision-analysis-and-recommendation.md)
+15. [Technical Demonstrations and Proofs of Concept](15-technical-demonstrations-and-proofs-of-concept.md)
 
-Chapter 15 will ask what evidence a demonstration or proof of concept should provide; it is not implemented yet.
+Chapter 16 will ask how to package evidence, recommendation, scope, assumptions, and next steps for decision-makers; it is not implemented yet.

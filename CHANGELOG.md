@@ -51,3 +51,8 @@ All notable changes to this project will be documented in this file. The format 
   perspectives, explicit professional judgment, conditional recommendation, alternatives and change
   triggers, validation guardrails, comparison matrix, traceability and Mermaid views, immutable
   evidence experiments, `sales-lab recommend`, tests, documentation, and debugging laboratory.
+
+- Chapter 15 immutable demonstration plans and results, explicit lifecycle distinctions, plan and
+  demo-theatre guardrails, deterministic Harbor Street Music execution and isolated experiments,
+  requirement and recommendation-condition coverage, simulated-boundary POC question, Mermaid and
+  Markdown evidence, `sales-lab demo`, tests, documentation, and debugging laboratory.
