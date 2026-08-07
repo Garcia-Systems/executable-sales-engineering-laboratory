@@ -30,6 +30,7 @@ from sales_lab.reports.markdown import (
     render_situation_summary,
 )
 from sales_lab.reports.requirements import render_requirements_report
+from sales_lab.reports.risks import render_risk_report
 from sales_lab.reports.stakeholders import render_stakeholder_report
 from sales_lab.reports.value import render_value_report
 from sales_lab.services.approaches import analyze_solution_approaches
@@ -46,6 +47,7 @@ from sales_lab.services.integrations import (
 )
 from sales_lab.services.investigation import build_initial_discovery_assessment
 from sales_lab.services.requirements import analyze_requirements
+from sales_lab.services.risks import analyze_harbor_street_risks
 from sales_lab.services.situation_summary import build_situation_summary
 from sales_lab.services.stakeholders import analyze_stakeholders
 from sales_lab.services.value import analyze_harbor_street_value
@@ -84,6 +86,7 @@ def chapters() -> None:
         "\n10. Integration Strategies"
         "\n11. Automation Opportunities and Human-in-the-Loop Design"
         "\n12. Cost, Benefit, and Value Analysis"
+        "\n13. Risks, Assumptions, Dependencies, and Constraints"
     )
 
 
@@ -243,6 +246,12 @@ def automation() -> None:
 def value() -> None:
     """Print Chapter 12 supported claims, unknowns, and fictional experiments."""
     typer.echo(render_value_report(analyze_harbor_street_value()), nl=False)
+
+
+@app.command()
+def risks() -> None:
+    """Print Chapter 13 traceable risks and related registers without scoring."""
+    typer.echo(render_risk_report(analyze_harbor_street_risks()), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.

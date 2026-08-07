@@ -79,3 +79,8 @@ approval boundary, exception paths, risks, and validation findings.
 ## Chapter 12 debugging laboratory
 
 Run `python examples/debug_chapter_12.py` or select **Debug Chapter 12 Value Analysis** in VS Code. Inspect canonical unknowns, evidence statuses, immutable fictional scenarios, financial metrics, and deterministic sensitivity results.
+
+
+## Chapter 13 debugging laboratory
+
+Run `python examples/debug_chapter_13.py` or select **Debug Chapter 13 Risks** in VS Code. Trace design premises through cause, event, consequence, response, and residual risk.

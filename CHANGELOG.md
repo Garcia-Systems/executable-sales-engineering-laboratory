@@ -44,3 +44,5 @@ All notable changes to this project will be documented in this file. The format 
   documentation, and debugging laboratory.
 
 - Chapter 12 immutable Decimal cost and benefit estimates, evidence states, ranges, baseline, calculation readiness, fictional scenario comparison, sensitivity analysis, omission and unsupported-claim guardrails, traceability diagram and report, `sales-lab value`, tests, documentation, and debugging laboratory.
+
+- Chapter 13 immutable risk and related registers, classification guardrails, approach profiles, traceability, immutable experiments, Mermaid diagrams, report, `sales-lab risks`, tests, documentation, and debugging laboratory.
