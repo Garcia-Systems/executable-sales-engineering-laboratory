@@ -214,6 +214,6 @@ def render_success_review(review: CustomerSuccessReview) -> str:
     ]
     for heading in ("## Benefit Validation", "## Unintended Effects", "## Corrective Actions"):
         index = lines.index(heading)
-        if index + 1 == len(lines) or lines[index + 1].startswith("##"):
+        if not lines[index + 1]:
             lines.insert(index + 1, "- None in this experiment.")
     return "\n".join(lines) + "\n"

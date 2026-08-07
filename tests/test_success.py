@@ -119,6 +119,8 @@ def test_guardrails_find_missing_inputs_activity_and_unintended_effects() -> Non
     assert "Unintended effect measure" in unintended_kinds
     assert MeasurementOwner("staff role").established
     assert not MeasurementOwner("OWNER_NOT_ESTABLISHED").established
+    owned = replace(measure, owner=MeasurementOwner("staff role"))
+    assert "Missing ownership" not in {finding.kind for finding in validate_measurements((owned,))}
 
 
 def test_reports_matrices_and_diagrams_are_stable_and_score_free() -> None:
@@ -137,6 +139,15 @@ def test_reports_matrices_and_diagrams_are_stable_and_score_free() -> None:
     assert "BEN-001" in render_benefit_matrix(plan)
     assert "Correct --> Process" in render_success_loop()
     assert "MeasurementInProgress --> Inconclusive" in render_success_lifecycle()
+    plan_without_adoption = replace(
+        plan,
+        measures=tuple(
+            measure for measure in plan.measures if measure.measure_type is not MeasureType.ADOPTION
+        ),
+    )
+    assert "## 12. Adoption Measures\n- None proposed." in render_success_plan(
+        plan_without_adoption
+    )
 
 
 def test_experiments_distinguish_adoption_outcome_causality_and_value() -> None:
@@ -162,6 +173,9 @@ def test_experiments_distinguish_adoption_outcome_causality_and_value() -> None:
         rendered = render_success_review(review)
         assert "EXPERIMENTAL_MEASUREMENT_SCENARIO" in rendered
         assert "# Customer Success Review Report" in rendered
+    assert "## Benefit Validation\n- None in this experiment." in render_success_review(unintended)
+    assert "## Unintended Effects\n- None in this experiment." in render_success_review(positive)
+    assert "## Corrective Actions\n- None in this experiment." in render_success_review(positive)
 
 
 def test_cli_success_plan_experiments_and_invalid_scenario() -> None:
