@@ -68,3 +68,9 @@ candidates rather than mutating the canonical architectures.
 ## Chapter 10 debugging laboratory
 
 Run `python examples/debug_chapter_10.py` or select **Debug Chapter 10 Integrations** in VS Code. Follow the Chapter 9 information flow through patterns, data, dependencies, assumptions, feasibility, failures, and duplicate delivery.
+
+## Chapter 11 debugging laboratory
+
+Run `python examples/debug_chapter_11.py` or select **Debug Chapter 11 Automation** in VS Code.
+Inspect the activity, characteristics, explicitly proposed mode, readiness, human responsibility,
+approval boundary, exception paths, risks, and validation findings.
