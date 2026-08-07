@@ -89,6 +89,7 @@ uv run sales-lab value
 uv run sales-lab risks
 uv run sales-lab recommend
 uv run sales-lab demo
+uv run sales-lab proposal
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -151,10 +152,10 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Unify risks, assumptions, dependencies, constraints, issues, responses, and residual risk in Chapter 13.
 - [x] Produce a transparent, evidence-traceable, conditional recommendation in Chapter 14.
 - [x] Define and execute Chapter 15 demonstration and proof-of-concept evidence.
-- [ ] Package decision-maker evidence, recommendation, scope, assumptions, and next steps in Chapter 16.
+- [x] Package decision-maker evidence, recommendation, scope, assumptions, and next steps in Chapter 16.
+- [ ] Define the responsible Sales Engineering-to-delivery handoff in Chapter 17.
 
-The unchecked items describe direction, not a promise of scope or delivery date. Proposals,
-implementation planning, and customer-success systems remain future chapters. Chapter 16 is next.
+The unchecked items describe direction, not a promise of scope or delivery date. Contractual implementation planning and customer-success systems remain future chapters. Chapter 17 is next.
 
 ## Contributing
 

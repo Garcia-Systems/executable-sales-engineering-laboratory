@@ -31,6 +31,7 @@ from sales_lab.reports.markdown import (
     render_initial_discovery_assessment,
     render_situation_summary,
 )
+from sales_lab.reports.proposals import render_customer_proposal, render_traceability
 from sales_lab.reports.requirements import render_requirements_report
 from sales_lab.reports.risks import render_risk_report
 from sales_lab.reports.stakeholders import render_stakeholder_report
@@ -50,6 +51,7 @@ from sales_lab.services.integrations import (
     integration_questions,
 )
 from sales_lab.services.investigation import build_initial_discovery_assessment
+from sales_lab.services.proposals import build_harbor_street_proposal
 from sales_lab.services.requirements import analyze_requirements
 from sales_lab.services.risks import analyze_harbor_street_risks
 from sales_lab.services.situation_summary import build_situation_summary
@@ -93,6 +95,7 @@ def chapters() -> None:
         "\n13. Risks, Assumptions, Dependencies, and Constraints"
         "\n14. Transparent Decision Analysis and Recommendation"
         "\n15. Technical Demonstrations and Proofs of Concept"
+        "\n16. Proposal and Decision Package"
     )
 
 
@@ -258,6 +261,23 @@ def value() -> None:
 def risks() -> None:
     """Print Chapter 13 traceable risks and related registers without scoring."""
     typer.echo(render_risk_report(analyze_harbor_street_risks()), nl=False)
+
+
+@app.command()
+def proposal() -> None:
+    """Print the Chapter 16 unapproved recommendation package and traceability."""
+    package = build_harbor_street_proposal()
+    typer.echo(
+        render_customer_proposal(package)
+        + "\n## Proposal Validation Findings\n"
+        + (
+            "\n".join(f"- {item}" for item in package.validation_findings)
+            or "- No validation findings."
+        )
+        + "\n\n## Proposal Traceability\n"
+        + render_traceability(package),
+        nl=False,
+    )
 
 
 @app.command()
