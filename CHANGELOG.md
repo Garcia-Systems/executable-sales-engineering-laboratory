@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
+- Chapter 17 immutable handoff and delivery-baseline model, lifecycle and readiness distinctions,
+  scope and presales guardrails, deterministic assessment and experiments, checklist, traceability,
+  Mermaid views, report, `sales-lab handoff`, tests, documentation, and debugging laboratory.
+
 - Chapter 16 immutable proposal package, Chapter 12–15 evidence reuse, scope traceability, commercial placeholders, persuasion and consistency validation, customer and technical reports, Mermaid flow, experiments, `sales-lab proposal`, tests, documentation, and debugging laboratory.
 
 - Initial Python 3.13 project foundation.

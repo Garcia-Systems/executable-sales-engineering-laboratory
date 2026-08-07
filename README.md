@@ -90,6 +90,7 @@ uv run sales-lab risks
 uv run sales-lab recommend
 uv run sales-lab demo
 uv run sales-lab proposal
+uv run sales-lab handoff
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -153,9 +154,10 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Produce a transparent, evidence-traceable, conditional recommendation in Chapter 14.
 - [x] Define and execute Chapter 15 demonstration and proof-of-concept evidence.
 - [x] Package decision-maker evidence, recommendation, scope, assumptions, and next steps in Chapter 16.
-- [ ] Define the responsible Sales Engineering-to-delivery handoff in Chapter 17.
+- [x] Define the responsible Sales Engineering-to-delivery handoff in Chapter 17.
+- [ ] Evaluate post-implementation outcomes and benefit realization in Chapter 18.
 
-The unchecked items describe direction, not a promise of scope or delivery date. Contractual implementation planning and customer-success systems remain future chapters. Chapter 17 is next.
+The unchecked items describe direction, not a promise of scope or delivery date. Production delivery and customer-success systems remain future chapters. Chapter 18 is next.
 
 ## Contributing
 
