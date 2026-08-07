@@ -19,5 +19,6 @@
 16. [Proposal and Decision Package](16-proposal-and-decision-package.md)
 17. [Implementation Handoff and Delivery Readiness](17-implementation-handoff-and-delivery-readiness.md)
 18. [Customer Success and Outcome Measurement](18-customer-success-and-outcome-measurement.md)
+19. [End-to-End Sales Engineering Engagement Simulator](19-end-to-end-sales-engineering-engagement-simulator.md)
 
-Chapter 19 will integrate the complete Volume I evidence chain.
+Chapter 19 completes the traceable Volume I evidence chain.

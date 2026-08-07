@@ -1,5 +1,6 @@
 """Command-line interface for the laboratory."""
 
+from pathlib import Path
 from typing import Annotated
 
 import typer
@@ -24,6 +25,12 @@ from sales_lab.reports.business_process import render_business_process_report
 from sales_lab.reports.capabilities import render_capability_report
 from sales_lab.reports.decisions import render_decision_report
 from sales_lab.reports.demonstrations import render_demonstration_report
+from sales_lab.reports.engagements import (
+    build_engagement_package,
+    export_engagement_package,
+    render_engagement_summary,
+    render_scenario_comparison,
+)
 from sales_lab.reports.gaps import render_gap_report
 from sales_lab.reports.handoffs import render_handoff_report
 from sales_lab.reports.integrations import render_integration_report
@@ -46,6 +53,7 @@ from sales_lab.services.capabilities import analyze_capabilities
 from sales_lab.services.decisions import harbor_street_decision_package
 from sales_lab.services.demonstrations import execute_harbor_street_demonstration
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
+from sales_lab.services.engagements import compare_scenarios, run_engagement
 from sales_lab.services.gaps import analyze_gaps
 from sales_lab.services.handoffs import assess_delivery_readiness, build_harbor_street_handoff
 from sales_lab.services.integrations import (
@@ -102,6 +110,7 @@ def chapters() -> None:
         "\n16. Proposal and Decision Package"
         "\n17. Implementation Handoff and Delivery Readiness"
         "\n18. Customer Success and Outcome Measurement"
+        "\n19. End-to-End Sales Engineering Engagement Simulator"
     )
 
 
@@ -324,6 +333,52 @@ def success(
         return
     message = "scenario must be 'canonical' or 'experimental'"
     raise typer.BadParameter(message)
+
+
+@app.command()
+def engagement(
+    output_dir: Annotated[
+        Path | None,
+        typer.Option(help="Export the complete deterministic Markdown package."),
+    ] = None,
+    *,
+    full: Annotated[
+        bool,
+        typer.Option(help="Display the complete package in deterministic filename order."),
+    ] = False,
+    scenario: Annotated[
+        str,
+        typer.Option(help="Use 'canonical' or display the neutral 'comparison'."),
+    ] = "canonical",
+) -> None:
+    """Execute Chapter 19's complete Harbor Street Music engagement."""
+    if scenario == "comparison":
+        typer.echo(render_scenario_comparison(compare_scenarios()), nl=False)
+        return
+    if scenario != "canonical":
+        message = "scenario must be 'canonical' or 'comparison'"
+        raise typer.BadParameter(message)
+    result = run_engagement()
+    package = build_engagement_package(result)
+    if output_dir is not None:
+        paths = export_engagement_package(package, output_dir)
+        typer.echo(f"Exported {len(paths)} reports to {output_dir}")
+    if full:
+        typer.echo(
+            "\n".join(f"<!-- {name} -->\n{content}" for name, content in package.documents),
+            nl=False,
+        )
+        return
+    statuses = "\n".join(
+        f"- {item.stage.value}: {item.status.value}" for item in result.stage_results
+    )
+    typer.echo(
+        f"Harbor Street Music End-to-End Engagement\n\nStage Statuses\n{statuses}\n\n"
+        + render_engagement_summary(result)
+        + "\nTraceability validation: "
+        + ("PASS" if not result.validation_findings else "FINDINGS"),
+        nl=False,
+    )
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.
