@@ -29,7 +29,7 @@ dev = [
   "pre-commit>=4.2,<5",
   "pytest>=8.4,<9",
   "pytest-cov>=6.2,<8",
-  "ruff>=0.12,<1",
+  "ruff>=0.12,<0.16",
 ]
 
 [project.scripts]
@@ -51,6 +51,10 @@ src = ["src", "tests"]
 select = ["ALL"]
 ignore = [
   "COM812", # Conflicts with the formatter.
+  "CPY001", # The project does not require per-file copyright headers.
+  "FURB192", # Keep deterministic sorted-first expressions readable.
+  "ISC004", # The formatter uses implicit concatenation for long collection strings.
+  "PLR0917", # PLR0913 already governs high-argument educational factories.
   "D203",   # Prefer D211: no blank line before class docstrings.
   "D213",   # Prefer D212: summary on the first line.
 ]
