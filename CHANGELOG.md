@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
+- Chapter 18 immutable customer-success measurement model, canonical Harbor Street Music plan, guardrails, benefit validation, fictional reviews, traceability, matrices, Mermaid views, report, `sales-lab success`, tests, documentation, and debugging laboratory.
+
 - Chapter 17 immutable handoff and delivery-baseline model, lifecycle and readiness distinctions,
   scope and presales guardrails, deterministic assessment and experiments, checklist, traceability,
   Mermaid views, report, `sales-lab handoff`, tests, documentation, and debugging laboratory.

@@ -36,6 +36,7 @@ from sales_lab.reports.proposals import render_customer_proposal, render_traceab
 from sales_lab.reports.requirements import render_requirements_report
 from sales_lab.reports.risks import render_risk_report
 from sales_lab.reports.stakeholders import render_stakeholder_report
+from sales_lab.reports.success import render_success_plan, render_success_review
 from sales_lab.reports.value import render_value_report
 from sales_lab.services.approaches import analyze_solution_approaches
 from sales_lab.services.architecture import analyze_architectures
@@ -58,6 +59,7 @@ from sales_lab.services.requirements import analyze_requirements
 from sales_lab.services.risks import analyze_harbor_street_risks
 from sales_lab.services.situation_summary import build_situation_summary
 from sales_lab.services.stakeholders import analyze_stakeholders
+from sales_lab.services.success import build_harbor_street_success_plan, experimental_reviews
 from sales_lab.services.value import analyze_harbor_street_value
 
 app = typer.Typer(
@@ -99,6 +101,7 @@ def chapters() -> None:
         "\n15. Technical Demonstrations and Proofs of Concept"
         "\n16. Proposal and Decision Package"
         "\n17. Implementation Handoff and Delivery Readiness"
+        "\n18. Customer Success and Outcome Measurement"
     )
 
 
@@ -300,6 +303,27 @@ def handoff() -> None:
     """Assess and print Chapter 17's unapproved implementation handoff."""
     package = assess_delivery_readiness(build_harbor_street_handoff())
     typer.echo(render_handoff_report(package), nl=False)
+
+
+@app.command()
+def success(
+    scenario: Annotated[
+        str,
+        typer.Option(help="Choose canonical measurement plan or experimental fictional reviews."),
+    ] = "canonical",
+) -> None:
+    """Print Chapter 18's plan or explicitly fictional measurement reviews."""
+    plan = build_harbor_street_success_plan()
+    if scenario == "canonical":
+        typer.echo(render_success_plan(plan), nl=False)
+        return
+    if scenario == "experimental":
+        typer.echo(
+            "\n".join(render_success_review(item) for item in experimental_reviews(plan)), nl=False
+        )
+        return
+    message = "scenario must be 'canonical' or 'experimental'"
+    raise typer.BadParameter(message)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.

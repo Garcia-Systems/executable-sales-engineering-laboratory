@@ -18,5 +18,6 @@
 15. [Technical Demonstrations and Proofs of Concept](15-technical-demonstrations-and-proofs-of-concept.md)
 16. [Proposal and Decision Package](16-proposal-and-decision-package.md)
 17. [Implementation Handoff and Delivery Readiness](17-implementation-handoff-and-delivery-readiness.md)
+18. [Customer Success and Outcome Measurement](18-customer-success-and-outcome-measurement.md)
 
-Chapter 18 will ask how the organization determines whether implementation produced the intended outcome.
+Chapter 19 will integrate the complete Volume I evidence chain.

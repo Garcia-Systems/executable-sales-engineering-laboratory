@@ -107,3 +107,8 @@ Run `python examples/debug_chapter_16.py`. Follow the recommendation through sco
 Run `python examples/debug_chapter_17.py` or select **Debug Chapter 17 Handoff** in VS Code.
 Trace proposal scope and approval status through requirements and architecture baselines, readiness
 conditions, blocking findings, next actions, and the immutable delivery package.
+
+
+## Chapter 18 debugging laboratory
+
+Run `python examples/debug_chapter_18.py` or select **Debug Chapter 18 Customer Success** in VS Code. Follow requirements and acceptance criteria into measures, missing baselines, evidence sources, ownership, fictional observations, outcome findings, benefit validation, unintended consequences, and conditional corrective actions.
