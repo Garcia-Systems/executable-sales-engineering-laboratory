@@ -8,10 +8,11 @@ An **executable textbook for learning Sales Engineering through deterministic si
 
 This repository will connect the craft of technical discovery, solution design, demonstration,
 validation, and communication to small programs that readers can run, inspect, test, and change.
-Chapters 0–14 now progress from immutable customer facts through discovery and process modeling to
+Chapters 0–15 now progress from immutable customer facts through discovery and process modeling to
 traceable requirements, capabilities, gaps, product-neutral approaches, and logical candidate
 solution architectures, evidence-bounded integration strategies, and accountable automation
-boundaries, auditable cost-and-value and risk analysis, and a transparent conditional recommendation.
+boundaries, auditable cost-and-value and risk analysis, a transparent conditional recommendation,
+and reproducible demonstration evidence with explicit production-readiness limits.
 
 ## Vision
 
@@ -87,6 +88,7 @@ uv run sales-lab automation
 uv run sales-lab value
 uv run sales-lab risks
 uv run sales-lab recommend
+uv run sales-lab demo
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -148,10 +150,11 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Evaluate costs, benefits, and consequences without fabricated precision in Chapter 12.
 - [x] Unify risks, assumptions, dependencies, constraints, issues, responses, and residual risk in Chapter 13.
 - [x] Produce a transparent, evidence-traceable, conditional recommendation in Chapter 14.
-- [ ] Define Chapter 15 demonstration and proof-of-concept evidence.
+- [x] Define and execute Chapter 15 demonstration and proof-of-concept evidence.
+- [ ] Package decision-maker evidence, recommendation, scope, assumptions, and next steps in Chapter 16.
 
 The unchecked items describe direction, not a promise of scope or delivery date. Proposals,
-implementation planning, and customer-success systems remain future chapters. Chapter 15 is next.
+implementation planning, and customer-success systems remain future chapters. Chapter 16 is next.
 
 ## Contributing
 
