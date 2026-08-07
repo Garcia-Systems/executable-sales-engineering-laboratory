@@ -1,5 +1,8 @@
 # Examples
 
+Chapter 19's `debug_chapter_19.py` runs the canonical engagement and an isolated
+integration-feasible comparison for debugger inspection.
+
 `debug_chapter_0.py` is a learner-owned entry point for inspecting the immutable Harbor Street Music
 facts, structured summary, and rendered report. Run it from the repository root after installation:
 

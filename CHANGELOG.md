@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
+- Chapter 19 immutable engagement model, dependency-aware orchestration, cross-stage traceability,
+  complete report package, generated Mermaid diagrams, isolated scenario experiments and structured
+  comparison/diff, `sales-lab engagement`, documentation, and debugging laboratory. Volume I is complete.
+
 - Chapter 18 immutable customer-success measurement model, canonical Harbor Street Music plan, guardrails, benefit validation, fictional reviews, traceability, matrices, Mermaid views, report, `sales-lab success`, tests, documentation, and debugging laboratory.
 
 - Chapter 17 immutable handoff and delivery-baseline model, lifecycle and readiness distinctions,

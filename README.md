@@ -8,7 +8,7 @@ An **executable textbook for learning Sales Engineering through deterministic si
 
 This repository will connect the craft of technical discovery, solution design, demonstration,
 validation, and communication to small programs that readers can run, inspect, test, and change.
-Chapters 0–18 now progress from immutable customer facts through discovery and process modeling to
+Chapters 0–19 now progress from immutable customer facts through discovery and process modeling to
 traceable requirements, capabilities, gaps, product-neutral approaches, and logical candidate
 solution architectures, evidence-bounded integration strategies, and accountable automation
 boundaries, auditable cost-and-value and risk analysis, a transparent conditional recommendation,
@@ -93,6 +93,9 @@ uv run sales-lab proposal
 uv run sales-lab handoff
 uv run sales-lab success
 uv run sales-lab success --scenario experimental
+uv run sales-lab engagement
+uv run sales-lab engagement --output-dir build/engagement
+uv run sales-lab engagement --scenario comparison
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -158,9 +161,15 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Package decision-maker evidence, recommendation, scope, assumptions, and next steps in Chapter 16.
 - [x] Define the responsible Sales Engineering-to-delivery handoff in Chapter 17.
 - [x] Plan post-implementation outcome measurement and benefit validation in Chapter 18.
-- [ ] Execute the complete traceable Volume I engagement in Chapter 19.
+- [x] Execute the complete traceable Volume I engagement in Chapter 19.
 
-The unchecked items describe direction, not a promise of scope or delivery date. Production delivery and customer-success systems remain future chapters. Chapter 19 is next.
+## Volume I completion
+
+Chapter 19 completes Volume I's educational analysis lifecycle. The canonical Harbor Street Music
+engagement now executes through recommendation, unapproved proposal, delivery-readiness assessment,
+and outcome-measurement planning while retaining cross-chapter traceability. This does not claim
+customer approval, implementation, production readiness, adoption, or realized value. Volume II
+functionality is not present.
 
 ## Contributing
 
