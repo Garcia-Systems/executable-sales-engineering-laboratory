@@ -22,6 +22,7 @@ from sales_lab.reports.architecture import render_architecture_report
 from sales_lab.reports.business_process import render_business_process_report
 from sales_lab.reports.capabilities import render_capability_report
 from sales_lab.reports.gaps import render_gap_report
+from sales_lab.reports.integrations import render_integration_report
 from sales_lab.reports.markdown import (
     render_discovery_meeting_summary,
     render_initial_discovery_assessment,
@@ -35,6 +36,11 @@ from sales_lab.services.business_process import validate_business_process
 from sales_lab.services.capabilities import analyze_capabilities
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
 from sales_lab.services.gaps import analyze_gaps
+from sales_lab.services.integrations import (
+    analyze_integrations,
+    harbor_street_integration_strategies,
+    integration_questions,
+)
 from sales_lab.services.investigation import build_initial_discovery_assessment
 from sales_lab.services.requirements import analyze_requirements
 from sales_lab.services.situation_summary import build_situation_summary
@@ -71,6 +77,7 @@ def chapters() -> None:
         "\n7. Current Capabilities & Gap Analysis"
         "\n8. Solution Approaches"
         "\n9. Future-State Solution Architecture"
+        "\n10. Integration Strategies"
     )
 
 
@@ -197,6 +204,27 @@ def architecture() -> None:
     )
     analysis = analyze_architectures(approaches_analysis, harbor_street_music_architectures())
     typer.echo(render_architecture_report(analysis), nl=False)
+
+
+@app.command()
+def integrations() -> None:
+    """Print Chapter 10 alternatives, dependencies, failures, and traceability."""
+    required = analyze_capabilities(
+        harbor_street_music_requirements(),
+        harbor_street_music_stakeholder_map(),
+        harbor_street_music_capability_map(),
+    )
+    gaps_analysis = analyze_gaps(required, harbor_street_music_current_capability_inventory())
+    approaches_analysis = analyze_solution_approaches(
+        gaps_analysis, harbor_street_music_solution_options()
+    )
+    architecture_analysis = analyze_architectures(
+        approaches_analysis, harbor_street_music_architectures()
+    )
+    analysis = analyze_integrations(
+        architecture_analysis, harbor_street_integration_strategies(), integration_questions()
+    )
+    typer.echo(render_integration_report(analysis), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.

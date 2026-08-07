@@ -79,6 +79,14 @@ def test_connections_flows_traceability_coverage_and_order_are_explicit() -> Non
     assert first.architecture.approach_ids == ("APP-001", "APP-002", "APP-003")
 
 
+def test_single_architecture_comparison_has_no_comparison_edge() -> None:
+    """A single candidate renders without inventing a second candidate or ranking edge."""
+    architecture = canonical_analysis().validations[0].architecture
+    diagram = render_architecture_comparison_mermaid((architecture,))
+    assert "Existing-Tool Enhancement" in diagram
+    assert "Compare, do not rank" not in diagram
+
+
 def test_overengineering_experiment_is_unjustified_and_immutable() -> None:
     """Sophistication is not quality when no traceable reason exists."""
     analysis = canonical_analysis()

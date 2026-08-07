@@ -139,6 +139,24 @@ def test_invalid_candidates_produce_transparent_findings() -> None:
     assert result.accepted_requirements == ()
 
 
+def test_unknown_conflict_reference_is_not_promoted_to_an_explicit_conflict() -> None:
+    criterion = AcceptanceCriterion("AC-X", "state", "event", "outcome")
+    requirement = Requirement(
+        "REQ-X",
+        "Staff must record a status.",
+        RequirementType.FUNCTIONAL,
+        "staff",
+        ("E2",),
+        (criterion,),
+        conflicts_with=("REQ-NOT-AUTHORED",),
+    )
+    analysis = analyze_requirements(
+        RequirementSet("Engagement", (requirement,), ()),
+        harbor_street_music_stakeholder_map(),
+    )
+    assert all(item.code != "EXPLICIT_CONFLICT" for item in analysis.findings)
+
+
 def test_matrix_report_and_diagram_are_deterministic() -> None:
     analysis = _analysis()
     matrix = render_traceability_matrix(analysis)

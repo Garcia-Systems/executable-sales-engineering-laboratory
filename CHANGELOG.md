@@ -35,3 +35,5 @@ All notable changes to this project will be documented in this file. The format 
   information flows, ADRs, assumptions, unknown dependencies, capability coverage and traceability,
   qualitative comparison without ranking, generated Mermaid and Markdown, `sales-lab architecture`,
   immutable overengineering and missing-capability experiments, tests, and debugging laboratory.
+
+- Chapter 10 immutable integration strategies, explicit direction and timing, interface assumptions, feasibility and failure validation, qualitative comparison, traceability, Mermaid diagrams, deterministic simulations, `sales-lab integrations`, tests, documentation, and debugging laboratory.
