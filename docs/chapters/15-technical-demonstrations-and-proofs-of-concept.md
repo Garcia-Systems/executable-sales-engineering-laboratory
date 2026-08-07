@@ -1,5 +1,7 @@
 # Chapter 15 — Technical Demonstrations and Proofs of Concept
 
+![Chapter 15 — Technical Demonstrations and Proofs of Concept](../../images/chapters/chapter-15.png)
+
 ## Research Foundations
 
 This chapter applies experimental thinking: state a falsifiable question, control the scenario,

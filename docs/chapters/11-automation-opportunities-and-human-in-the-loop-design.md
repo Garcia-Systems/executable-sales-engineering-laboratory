@@ -1,5 +1,7 @@
 # Chapter 11 — Automation Opportunities and Human-in-the-Loop Design
 
+![Chapter 11 — Automation Opportunities and Human-in-the-Loop Design](../../images/chapters/chapter-11.png)
+
 > Automation should remove appropriate repetitive work while preserving necessary judgment,
 > accountability, and human relationships.
 

@@ -1,5 +1,7 @@
 # Chapter 3: Business Process Modeling
 
+![Chapter 3: Business Process Modeling](../../images/chapters/chapter-03.png)
+
 ## Learning objectives
 
 After completing this chapter, you should be able to explain why a process is modeled; distinguish

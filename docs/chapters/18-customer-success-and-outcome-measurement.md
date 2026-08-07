@@ -1,5 +1,7 @@
 # Chapter 18 — Customer Success and Outcome Measurement
 
+![Chapter 18 — Customer Success and Outcome Measurement](../../images/chapters/chapter-18.png)
+
 ## Research Foundations
 
 This chapter draws on requirements traceability, measurement theory, benefits realization, process improvement, program evaluation, and causal reasoning. The suggested reading identifies established sources; the laboratory does not claim a universal customer-success method.

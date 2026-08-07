@@ -1,5 +1,7 @@
 # Chapter 14 — Transparent Decision Analysis and Recommendation
 
+![Chapter 14 — Transparent Decision Analysis and Recommendation](../../images/chapters/chapter-14.png)
+
 ## Research Foundations
 
 Decision analysis makes alternatives, evidence, uncertainty, and values inspectable. Risk-management

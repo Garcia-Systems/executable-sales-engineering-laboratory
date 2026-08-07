@@ -1,5 +1,7 @@
 # Chapter 1: Customer Problems vs. Customer Symptoms
 
+![Chapter 1: Customer Problems vs. Customer Symptoms](../../images/chapters/chapter-01.png)
+
 ## Research foundations
 
 Disciplined discovery separates what a person says, what an investigator observes, and what evidence verifies. Scientific inquiry contributes hypotheses open to disconfirmation; interview practice contributes careful recording and neutral questions. Code does not replace professional judgment.

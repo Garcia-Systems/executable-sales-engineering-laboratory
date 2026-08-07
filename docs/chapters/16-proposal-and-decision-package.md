@@ -1,5 +1,7 @@
 # Chapter 16 — Proposal and Decision Package
 
+![Chapter 16 — Proposal and Decision Package](../../images/chapters/chapter-16.png)
+
 ## Research Foundations
 
 This chapter applies requirements traceability, decision records, risk registers, and evidence-based reasoning already introduced in Chapters 5–15. Suggested reading appears below; the laboratory does not claim a universal proposal standard.

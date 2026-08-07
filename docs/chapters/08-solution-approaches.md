@@ -1,5 +1,7 @@
 # Chapter 8 — Solution Approaches: Configure, Integrate, Buy, Build, or Change the Process
 
+![Chapter 8 — Solution Approaches: Configure, Integrate, Buy, Build, or Change the Process](../../images/chapters/chapter-08.png)
+
 ## Research Foundations
 
 This chapter applies established requirements-engineering practices: preserve traceability, make

@@ -1,5 +1,7 @@
 # Chapter 13 — Risks, Assumptions, Dependencies, and Constraints
 
+![Chapter 13 — Risks, Assumptions, Dependencies, and Constraints](../../images/chapters/chapter-13.png)
+
 ## Research Foundations
 
 Risk analysis supports decisions by making uncertainty visible. This chapter uses established ideas

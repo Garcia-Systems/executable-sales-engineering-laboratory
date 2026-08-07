@@ -1,5 +1,7 @@
 # Chapter 9 — Future-State Solution Architecture
 
+![Chapter 9 — Future-State Solution Architecture](../../images/chapters/chapter-09.png)
+
 > Architecture begins with responsibilities and boundaries, not product names.
 
 ## Research Foundations

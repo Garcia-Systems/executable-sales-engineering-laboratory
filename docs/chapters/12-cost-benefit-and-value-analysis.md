@@ -1,5 +1,7 @@
 # Chapter 12 — Cost, Benefit, and Value Analysis
 
+![Chapter 12 — Cost, Benefit, and Value Analysis](../../images/chapters/chapter-12.png)
+
 ## Research Foundations
 
 Value analysis applies measurement theory, requirements traceability, and basic managerial accounting. A mathematically correct result is not necessarily well supported: definitions, sources, omissions, time horizons, and causality determine whether it is useful. This chapter uses `Decimal`, immutable inputs, explicit evidence states, and deterministic calculations so every result is reproducible.
