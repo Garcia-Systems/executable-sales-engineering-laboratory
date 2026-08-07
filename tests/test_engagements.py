@@ -1,6 +1,6 @@
 """End-to-end tests for the Volume I capstone."""
 
-from dataclasses import FrozenInstanceError
+from dataclasses import FrozenInstanceError, replace
 from pathlib import Path
 
 import pytest
@@ -67,6 +67,19 @@ def test_trace_and_package(tmp_path: Path) -> None:
     paths = export_engagement_package(package, tmp_path)
     assert len(paths) == PACKAGE_DOCUMENT_COUNT
     assert all(path.is_file() for path in paths)
+
+
+def test_summary_rejects_a_blocked_stage_without_output() -> None:
+    """Report composition never substitutes an empty placeholder for a blocked stage."""
+    engagement = run_engagement()
+    recommendation = engagement.result(EngagementStage.RECOMMENDATION)
+    blocked = replace(recommendation, status=StageStatus.BLOCKED, output=None)
+    changed_results = tuple(
+        blocked if result.stage is EngagementStage.RECOMMENDATION else result
+        for result in engagement.stage_results
+    )
+    with pytest.raises(ValueError, match="Recommendation has no output"):
+        render_engagement_summary(replace(engagement, stage_results=changed_results))
 
 
 def test_trace_validation_detects_empty_and_duplicate_links() -> None:

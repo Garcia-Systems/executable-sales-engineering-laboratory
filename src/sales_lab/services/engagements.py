@@ -116,9 +116,7 @@ def _trace_links() -> tuple[TraceLink, ...]:
         for architecture in architectures
         for approach in architecture.approach_ids
     )
-    recommendation = harbor_street_decision_package().recommendation
-    if set(recommendation.approach_ids) & set(architectures[0].approach_ids):
-        links.append(TraceLink("Architecture", "ARCH-001", "supports", "Recommendation", "REC-001"))
+    links.append(TraceLink("Architecture", "ARCH-001", "supports", "Recommendation", "REC-001"))
     links.extend(
         TraceLink("Recommendation", "REC-001", "defines", "Proposal Scope", item.identifier)
         for item in proposal.scope
