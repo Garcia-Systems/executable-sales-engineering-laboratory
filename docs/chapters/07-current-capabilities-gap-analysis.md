@@ -1,5 +1,7 @@
 # Chapter 7 — Current Capabilities & Gap Analysis
 
+![Chapter 7 — Current Capabilities & Gap Analysis](../../images/chapters/chapter-07.png)
+
 ## Research Foundations
 
 Gap analysis compares a required state with an evidenced current state. This chapter applies that

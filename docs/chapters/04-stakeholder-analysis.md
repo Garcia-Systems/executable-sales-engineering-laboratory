@@ -1,5 +1,7 @@
 # Chapter 4 — Stakeholder Analysis
 
+![Chapter 4 — Stakeholder Analysis](../../images/chapters/chapter-04.png)
+
 ## Research Foundations
 
 Stakeholder analysis begins from a modest systems principle: a technical system operates within a

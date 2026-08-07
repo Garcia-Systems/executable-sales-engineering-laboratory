@@ -1,5 +1,7 @@
 # Chapter 0: Setting Up the Sales Engineering Laboratory
 
+![Chapter 0: Setting Up the Sales Engineering Laboratory](../../images/chapters/chapter-00.png)
+
 ## Foundations and professional practice
 
 **Sales Engineering (SE), also called Solutions Engineering in many organizations, is the

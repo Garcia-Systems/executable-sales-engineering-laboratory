@@ -1,5 +1,7 @@
 # Chapter 10 — Integration Strategies: Manual, Batch, API, and Event-Driven Integration
 
+![Chapter 10 — Integration Strategies: Manual, Batch, API, and Event-Driven Integration](../../images/chapters/chapter-10.png)
+
 > Integration is the controlled movement of information or work across a boundary.
 
 ## Research Foundations

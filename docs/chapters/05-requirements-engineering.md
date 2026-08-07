@@ -1,5 +1,7 @@
 # Chapter 5 — Requirements Engineering
 
+![Chapter 5 — Requirements Engineering](../../images/chapters/chapter-05.png)
+
 ## Research Foundations
 
 Requirements engineering makes needs explicit, reviewable, and traceable. ISO/IEC/IEEE 29148

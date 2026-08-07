@@ -1,5 +1,7 @@
 # Chapter 2: Discovery Meetings
 
+![Chapter 2: Discovery Meetings](../../images/chapters/chapter-02.png)
+
 A discovery meeting is a structured conversation for learning how a customer describes its business,
 process, evidence, and unanswered questions. Its purpose is **understanding before design**. A Sales
 Engineer listens, asks neutral questions, records the source of claims, and names gaps. The meeting

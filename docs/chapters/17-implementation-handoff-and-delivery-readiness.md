@@ -1,5 +1,7 @@
 # Chapter 17 — Implementation Handoff and Delivery Readiness
 
+![Chapter 17 — Implementation Handoff and Delivery Readiness](../../images/chapters/chapter-17.png)
+
 ## Research Foundations
 
 This chapter applies requirements baselines, architecture decision records, verification and validation, responsibility assignment, configuration control, and risk management. The suggested reading names established sources; the laboratory does not claim one universal handoff method.

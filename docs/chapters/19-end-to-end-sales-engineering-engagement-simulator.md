@@ -1,5 +1,7 @@
 # Chapter 19: End-to-End Sales Engineering Engagement Simulator
 
+![Chapter 19: End-to-End Sales Engineering Engagement Simulator](../../images/chapters/chapter-19.png)
+
 ## Research Foundations
 
 This capstone applies the evidence, requirements, architecture, risk, decision, delivery, and

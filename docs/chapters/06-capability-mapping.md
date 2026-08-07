@@ -1,5 +1,7 @@
 # Chapter 6 — Capability Mapping
 
+![Chapter 6 — Capability Mapping](../../images/chapters/chapter-06.png)
+
 ## Research Foundations
 
 Capability mapping connects established needs to what an organization must be able to accomplish.
