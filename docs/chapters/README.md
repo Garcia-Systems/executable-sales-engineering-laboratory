@@ -17,5 +17,6 @@
 14. [Transparent Decision Analysis and Recommendation](14-transparent-decision-analysis-and-recommendation.md)
 15. [Technical Demonstrations and Proofs of Concept](15-technical-demonstrations-and-proofs-of-concept.md)
 16. [Proposal and Decision Package](16-proposal-and-decision-package.md)
+17. [Implementation Handoff and Delivery Readiness](17-implementation-handoff-and-delivery-readiness.md)
 
-Chapter 17 will ask what must transfer to delivery before implementation can responsibly begin.
+Chapter 18 will ask how the organization determines whether implementation produced the intended outcome.

@@ -101,3 +101,9 @@ evidence, observations, findings, coverage, and limitations. The scheduling boun
 ## Chapter 16 debugging laboratory
 
 Run `python examples/debug_chapter_16.py`. Follow the recommendation through scope, exclusions, proposed deliverables, reused risks and assumptions, commercial placeholders, the bounded decision request, and deterministic validation.
+
+## Chapter 17 debugging laboratory
+
+Run `python examples/debug_chapter_17.py` or select **Debug Chapter 17 Handoff** in VS Code.
+Trace proposal scope and approval status through requirements and architecture baselines, readiness
+conditions, blocking findings, next actions, and the immutable delivery package.

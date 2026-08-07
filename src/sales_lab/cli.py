@@ -25,6 +25,7 @@ from sales_lab.reports.capabilities import render_capability_report
 from sales_lab.reports.decisions import render_decision_report
 from sales_lab.reports.demonstrations import render_demonstration_report
 from sales_lab.reports.gaps import render_gap_report
+from sales_lab.reports.handoffs import render_handoff_report
 from sales_lab.reports.integrations import render_integration_report
 from sales_lab.reports.markdown import (
     render_discovery_meeting_summary,
@@ -45,6 +46,7 @@ from sales_lab.services.decisions import harbor_street_decision_package
 from sales_lab.services.demonstrations import execute_harbor_street_demonstration
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
 from sales_lab.services.gaps import analyze_gaps
+from sales_lab.services.handoffs import assess_delivery_readiness, build_harbor_street_handoff
 from sales_lab.services.integrations import (
     analyze_integrations,
     harbor_street_integration_strategies,
@@ -96,6 +98,7 @@ def chapters() -> None:
         "\n14. Transparent Decision Analysis and Recommendation"
         "\n15. Technical Demonstrations and Proofs of Concept"
         "\n16. Proposal and Decision Package"
+        "\n17. Implementation Handoff and Delivery Readiness"
     )
 
 
@@ -290,6 +293,13 @@ def recommend() -> None:
 def demo() -> None:
     """Execute Chapter 15's narrow, deterministic technical demonstration."""
     typer.echo(render_demonstration_report(execute_harbor_street_demonstration()), nl=False)
+
+
+@app.command()
+def handoff() -> None:
+    """Assess and print Chapter 17's unapproved implementation handoff."""
+    package = assess_delivery_readiness(build_harbor_street_handoff())
+    typer.echo(render_handoff_report(package), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.
