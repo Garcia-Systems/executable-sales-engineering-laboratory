@@ -14,5 +14,6 @@
 11. [Automation Opportunities and Human-in-the-Loop Design](11-automation-opportunities-and-human-in-the-loop-design.md)
 12. [Cost, Benefit, and Value Analysis](12-cost-benefit-and-value-analysis.md)
 13. [Risks, Assumptions, Dependencies, and Constraints](13-risks-assumptions-dependencies-and-constraints.md)
+14. [Transparent Decision Analysis and Recommendation](14-transparent-decision-analysis-and-recommendation.md)
 
-Later chapters will extend this foundation; they are intentionally not implemented yet.
+Chapter 15 will ask what evidence a demonstration or proof of concept should provide; it is not implemented yet.

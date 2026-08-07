@@ -44,6 +44,18 @@ def test_chapters_lists_chapter_zero() -> None:
     assert "9. Future-State Solution Architecture" in result.stdout
     assert "10. Integration Strategies" in result.stdout
     assert "11. Automation Opportunities" in result.stdout
+    assert "14. Transparent Decision Analysis and Recommendation" in result.stdout
+
+
+def test_recommend_prints_transparent_conditional_decision_package() -> None:
+    """Chapter 14 CLI exposes recommendation evidence, conditions, and authority."""
+    result = runner.invoke(app, ["recommend"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("# Decision Analysis and Recommendation")
+    assert "Configure the Existing Spreadsheet" in result.stdout
+    assert "Proceed Conditionally" in result.stdout
+    assert "## 17. Change Triggers" in result.stdout
+    assert "does not approve" in result.stdout
 
 
 def test_automation_prints_modes_responsibility_and_guardrails() -> None:
