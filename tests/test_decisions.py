@@ -122,6 +122,19 @@ def test_validation_rejects_unmet_condition_conditional_omission_and_disqualific
         validate_decision(replace(package, recommendation=conditional))
 
 
+def test_validation_rejects_hidden_numeric_decision_fields(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A future numeric score field cannot silently enter recommendation logic."""
+    package = harbor_street_decision_package()
+    monkeypatch.setattr(
+        "sales_lab.services.decisions.numeric_decision_fields",
+        lambda: ("score",),
+    )
+    with pytest.raises(ValueError, match="hidden numeric decision field detected"):
+        validate_decision(package)
+
+
 def test_matrix_report_and_mermaid_are_deterministic_and_non_numeric() -> None:
     """Presentation exposes findings and authority boundaries without arithmetic selection."""
     package = harbor_street_decision_package()
