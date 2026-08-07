@@ -16,5 +16,6 @@
 13. [Risks, Assumptions, Dependencies, and Constraints](13-risks-assumptions-dependencies-and-constraints.md)
 14. [Transparent Decision Analysis and Recommendation](14-transparent-decision-analysis-and-recommendation.md)
 15. [Technical Demonstrations and Proofs of Concept](15-technical-demonstrations-and-proofs-of-concept.md)
+16. [Proposal and Decision Package](16-proposal-and-decision-package.md)
 
-Chapter 16 will ask how to package evidence, recommendation, scope, assumptions, and next steps for decision-makers; it is not implemented yet.
+Chapter 17 will ask what must transfer to delivery before implementation can responsibly begin.

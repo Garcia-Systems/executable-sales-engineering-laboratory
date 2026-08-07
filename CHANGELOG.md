@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
+- Chapter 16 immutable proposal package, Chapter 12–15 evidence reuse, scope traceability, commercial placeholders, persuasion and consistency validation, customer and technical reports, Mermaid flow, experiments, `sales-lab proposal`, tests, documentation, and debugging laboratory.
+
 - Initial Python 3.13 project foundation.
 - Placeholder `sales-lab` commands for project information, chapters, and examples.
 - Automated linting, formatting, typing, tests, coverage, and continuous integration.

@@ -96,3 +96,8 @@ professional judgment, recommendation conditions, alternatives, and change trigg
 Run `python examples/debug_chapter_15.py` or select **Debug Chapter 15 Demonstration** in VS Code.
 Trace recommendation conditions through the objective, fictional scenario, ordered steps, immutable
 evidence, observations, findings, coverage, and limitations. The scheduling boundary remains simulated.
+
+
+## Chapter 16 debugging laboratory
+
+Run `python examples/debug_chapter_16.py`. Follow the recommendation through scope, exclusions, proposed deliverables, reused risks and assumptions, commercial placeholders, the bounded decision request, and deterministic validation.
