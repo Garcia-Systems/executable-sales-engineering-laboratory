@@ -42,3 +42,5 @@ All notable changes to this project will be documented in this file. The format 
   responsibility and traceability matrices, Mermaid diagrams, deterministic reminder, approval, and
   exception simulations, immutable evidence experiments, `sales-lab automation`, tests,
   documentation, and debugging laboratory.
+
+- Chapter 12 immutable Decimal cost and benefit estimates, evidence states, ranges, baseline, calculation readiness, fictional scenario comparison, sensitivity analysis, omission and unsupported-claim guardrails, traceability diagram and report, `sales-lab value`, tests, documentation, and debugging laboratory.

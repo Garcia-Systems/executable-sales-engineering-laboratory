@@ -8,10 +8,10 @@ An **executable textbook for learning Sales Engineering through deterministic si
 
 This repository will connect the craft of technical discovery, solution design, demonstration,
 validation, and communication to small programs that readers can run, inspect, test, and change.
-Chapters 0–11 now progress from immutable customer facts through discovery and process modeling to
+Chapters 0–12 now progress from immutable customer facts through discovery and process modeling to
 traceable requirements, capabilities, gaps, product-neutral approaches, and logical candidate
 solution architectures, evidence-bounded integration strategies, and accountable automation
-boundaries.
+boundaries, and auditable cost-and-value analysis.
 
 ## Vision
 
@@ -84,6 +84,7 @@ uv run sales-lab approaches
 uv run sales-lab architecture
 uv run sales-lab integrations
 uv run sales-lab automation
+uv run sales-lab value
 ```
 
 Run `uv run sales-lab --help` to see all commands and options.
@@ -142,7 +143,7 @@ LLM dependencies, external services, and network-dependent behavior are outside 
 - [x] Model coherent future-state solution concepts in Chapter 9.
 - [x] Compare manual, batch, API, webhook, and event-driven integration strategies in Chapter 10.
 - [x] Explore automation boundaries and human judgment in Chapter 11.
-- [ ] Evaluate costs, benefits, and consequences without fabricated precision in Chapter 12.
+- [x] Evaluate costs, benefits, and consequences without fabricated precision in Chapter 12.
 - [ ] Expand the example catalog and cross-chapter capstone exercises.
 
 The unchecked items describe direction, not a promise of scope or delivery date. Proposals,

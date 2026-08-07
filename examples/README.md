@@ -74,3 +74,8 @@ Run `python examples/debug_chapter_10.py` or select **Debug Chapter 10 Integrati
 Run `python examples/debug_chapter_11.py` or select **Debug Chapter 11 Automation** in VS Code.
 Inspect the activity, characteristics, explicitly proposed mode, readiness, human responsibility,
 approval boundary, exception paths, risks, and validation findings.
+
+
+## Chapter 12 debugging laboratory
+
+Run `python examples/debug_chapter_12.py` or select **Debug Chapter 12 Value Analysis** in VS Code. Inspect canonical unknowns, evidence statuses, immutable fictional scenarios, financial metrics, and deterministic sensitivity results.

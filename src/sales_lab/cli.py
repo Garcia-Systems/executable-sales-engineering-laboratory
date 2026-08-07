@@ -31,6 +31,7 @@ from sales_lab.reports.markdown import (
 )
 from sales_lab.reports.requirements import render_requirements_report
 from sales_lab.reports.stakeholders import render_stakeholder_report
+from sales_lab.reports.value import render_value_report
 from sales_lab.services.approaches import analyze_solution_approaches
 from sales_lab.services.architecture import analyze_architectures
 from sales_lab.services.automation import analyze_harbor_street_automation
@@ -47,6 +48,7 @@ from sales_lab.services.investigation import build_initial_discovery_assessment
 from sales_lab.services.requirements import analyze_requirements
 from sales_lab.services.situation_summary import build_situation_summary
 from sales_lab.services.stakeholders import analyze_stakeholders
+from sales_lab.services.value import analyze_harbor_street_value
 
 app = typer.Typer(
     help="Explore the executable Sales Engineering laboratory.",
@@ -81,6 +83,7 @@ def chapters() -> None:
         "\n9. Future-State Solution Architecture"
         "\n10. Integration Strategies"
         "\n11. Automation Opportunities and Human-in-the-Loop Design"
+        "\n12. Cost, Benefit, and Value Analysis"
     )
 
 
@@ -234,6 +237,12 @@ def integrations() -> None:
 def automation() -> None:
     """Print Chapter 11 candidate modes, human accountability, and guardrails."""
     typer.echo(render_automation_report(analyze_harbor_street_automation()), nl=False)
+
+
+@app.command()
+def value() -> None:
+    """Print Chapter 12 supported claims, unknowns, and fictional experiments."""
+    typer.echo(render_value_report(analyze_harbor_street_value()), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.
