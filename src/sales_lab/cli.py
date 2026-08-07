@@ -22,6 +22,7 @@ from sales_lab.reports.architecture import render_architecture_report
 from sales_lab.reports.automation import render_automation_report
 from sales_lab.reports.business_process import render_business_process_report
 from sales_lab.reports.capabilities import render_capability_report
+from sales_lab.reports.decisions import render_decision_report
 from sales_lab.reports.gaps import render_gap_report
 from sales_lab.reports.integrations import render_integration_report
 from sales_lab.reports.markdown import (
@@ -38,6 +39,7 @@ from sales_lab.services.architecture import analyze_architectures
 from sales_lab.services.automation import analyze_harbor_street_automation
 from sales_lab.services.business_process import validate_business_process
 from sales_lab.services.capabilities import analyze_capabilities
+from sales_lab.services.decisions import harbor_street_decision_package
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
 from sales_lab.services.gaps import analyze_gaps
 from sales_lab.services.integrations import (
@@ -87,6 +89,7 @@ def chapters() -> None:
         "\n11. Automation Opportunities and Human-in-the-Loop Design"
         "\n12. Cost, Benefit, and Value Analysis"
         "\n13. Risks, Assumptions, Dependencies, and Constraints"
+        "\n14. Transparent Decision Analysis and Recommendation"
     )
 
 
@@ -252,6 +255,12 @@ def value() -> None:
 def risks() -> None:
     """Print Chapter 13 traceable risks and related registers without scoring."""
     typer.echo(render_risk_report(analyze_harbor_street_risks()), nl=False)
+
+
+@app.command()
+def recommend() -> None:
+    """Print Chapter 14's transparent, conditional recommendation package."""
+    typer.echo(render_decision_report(harbor_street_decision_package()), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.
