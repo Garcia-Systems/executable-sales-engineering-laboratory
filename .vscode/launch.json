@@ -2,6 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug Chapter 13 Risks",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/debug_chapter_13.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
       "name": "Debug Chapter 12 Value Analysis",
       "type": "debugpy",
       "request": "launch",
