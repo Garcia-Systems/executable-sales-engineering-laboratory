@@ -1,6 +1,6 @@
 """Chapter 12 transparent value-analysis tests."""
 
-# ruff: noqa: PLR2004
+# ruff: noqa: PLR2004, RUF001
 
 from dataclasses import FrozenInstanceError, replace
 from decimal import Decimal
@@ -262,3 +262,25 @@ def test_canonical_analysis_report_diagram_and_cli_are_neutral() -> None:
     assert "Sensitivity Analysis" in result.stdout
     chapters = CliRunner().invoke(app, ["chapters"])
     assert "12. Cost, Benefit, and Value Analysis" in chapters.stdout
+
+
+def test_report_renders_established_ranges_and_measurable_benefits() -> None:
+    """The supported-data branches render values instead of canonical unknown messages."""
+    analysis = analyze_harbor_street_value()
+    established_cost = replace(
+        analysis.costs[0],
+        amount=EstimateRange(Decimal(10), Decimal(20), Decimal(15)),
+        evidence_status=EvidenceStatus.ESTABLISHED,
+    )
+    measured_benefit = replace(
+        analysis.benefits[0],
+        amount=EstimateRange(Decimal(1), Decimal(3), Decimal(2)),
+        evidence_status=EvidenceStatus.ESTABLISHED,
+    )
+    report = render_value_report(
+        replace(analysis, costs=(established_cost,), benefits=(measured_benefit,))
+    )
+    assert "COST-001: Commercial software price" in report
+    assert "COST-001: 10–20 USD" in report
+    assert "BEN-001: EstimateRange" in report
+    assert "None established in the canonical analysis" not in report

@@ -2,8 +2,16 @@
 
 # ruff: noqa: E501, RUF001 - educational prose and range typography are intentional.
 
+from typing import cast
+
 from sales_lab.diagrams.value import render_value_mermaid
-from sales_lab.domain.value import CostTiming, EvidenceStatus, ValueAnalysis, ValueKind
+from sales_lab.domain.value import (
+    CostTiming,
+    EstimateRange,
+    EvidenceStatus,
+    ValueAnalysis,
+    ValueKind,
+)
 from sales_lab.services.value import total_cost
 
 
@@ -70,11 +78,10 @@ def render_value_report(analysis: ValueAnalysis) -> str:
     )
     lines.extend(("", "## 11. Estimate Ranges"))
     ranged = tuple(c for c in analysis.costs if c.amount is not None)
-    for cost in ranged:
-        if cost.amount is not None:
-            lines.append(  # noqa: PERF401 - condition narrows the optional range for MyPy.
-                f"- {cost.identifier}: {cost.amount.minimum}–{cost.amount.maximum} {cost.unit.value}"
-            )
+    lines.extend(
+        f"- {cost.identifier}: {cast('EstimateRange', cost.amount).minimum}–{cast('EstimateRange', cost.amount).maximum} {cost.unit.value}"
+        for cost in ranged
+    )
     if not ranged:
         lines.append(
             "- Canonical numerical ranges are Not Established; fictional inputs appear only below."
