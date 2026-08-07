@@ -42,7 +42,9 @@ def _duplicates(values: tuple[str, ...]) -> tuple[str, ...]:
 def _has_cycle(step_ids: tuple[str, ...], transitions: tuple[WorkflowTransition, ...]) -> bool:
     edges: dict[str, list[str]] = {step_id: [] for step_id in step_ids}
     for transition in transitions:
-        if transition.source_step_id in edges and transition.target_step_id in edges:
+        if (  # pragma: no branch - validation passes only known endpoints to cycle detection.
+            transition.source_step_id in edges and transition.target_step_id in edges
+        ):
             edges[transition.source_step_id].append(transition.target_step_id)
     visiting: set[str] = set()
     visited: set[str] = set()
@@ -121,7 +123,7 @@ def validate_business_process(process: BusinessProcess) -> ProcessModel:
         if source_known and target_known:
             valid_edges.append(transition)
             target_id = transition.target_step_id
-            if target_id is None:  # Defensive narrowing; target_known already excludes this case.
+            if target_id is None:  # pragma: no cover - target_known excludes this defensive case.
                 continue
             if positions[transition.source_step_id] >= positions[target_id]:
                 messages.append(

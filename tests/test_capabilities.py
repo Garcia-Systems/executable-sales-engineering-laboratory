@@ -102,9 +102,11 @@ def test_unknown_links_are_incomplete_and_do_not_create_coverage() -> None:
         original.capabilities,
         (*original.links, CapabilityRequirementLink("CAP-404", "REQ-404")),
     )
-    finding = analysis_for(modified).incomplete_mappings[0]
+    analysis = analysis_for(modified)
+    finding = analysis.incomplete_mappings[0]
     assert finding.kind == "Incomplete Mapping"
     assert finding.subject_id == "REQ-404 → CAP-404"
+    assert "REQ-404" not in render_capability_report(analysis).split("## Traceability", 1)[1]
 
 
 def test_solution_first_experiment_is_immutable_and_flagged() -> None:

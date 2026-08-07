@@ -1,6 +1,6 @@
 """Chapter 7 evidence-based gap analysis behavior and educational boundaries."""
 
-from dataclasses import FrozenInstanceError
+from dataclasses import FrozenInstanceError, replace
 
 import pytest
 
@@ -149,3 +149,40 @@ def test_invalid_references_and_incomplete_nonavailable_assessments_are_rejected
     )
     with pytest.raises(ValueError, match="needs a gap and question"):
         analyze_gaps(required, inventory)
+
+
+def test_inventory_identity_validation() -> None:
+    """Engagement and authored identifiers must remain unambiguous."""
+    base = harbor_street_music_current_capability_inventory()
+    required = canonical_analysis().required
+    cases = (
+        (replace(base, engagement="Other"), "same engagement"),
+        (replace(base, resources=(base.resources[0], base.resources[0])), "resource identifiers"),
+        (replace(base, evidence=(base.evidence[0], base.evidence[0])), "evidence identifiers"),
+        (
+            replace(base, assessments=(base.assessments[0], base.assessments[0])),
+            "assessment.*unique",
+        ),
+    )
+    for inventory, message in cases:
+        with pytest.raises(ValueError, match=message):
+            analyze_gaps(required, inventory)
+
+
+def test_inventory_rejects_unknown_evidence_capabilities_and_missing_assessments() -> None:
+    """Every resource and assessment remains traceable to authored evidence and capabilities."""
+    base = harbor_street_music_current_capability_inventory()
+    required = canonical_analysis().required
+    bad_resource = replace(base.resources[0], evidence_ids=("E-404",))
+    with pytest.raises(ValueError, match="resource references unknown evidence"):
+        analyze_gaps(required, replace(base, resources=(bad_resource, *base.resources[1:])))
+    unknown_capability = replace(base.assessments[0], capability_id="CAP-404")
+    with pytest.raises(ValueError, match="unknown capability"):
+        analyze_gaps(
+            required, replace(base, assessments=(unknown_capability, *base.assessments[1:]))
+        )
+    with pytest.raises(ValueError, match="lacks an assessment"):
+        analyze_gaps(required, replace(base, assessments=base.assessments[:-1]))
+    bad_evidence = replace(base.assessments[0], evidence_ids=("E-404",))
+    with pytest.raises(ValueError, match="assessment references unknown evidence"):
+        analyze_gaps(required, replace(base, assessments=(bad_evidence, *base.assessments[1:])))
