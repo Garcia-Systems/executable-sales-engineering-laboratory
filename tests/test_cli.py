@@ -43,6 +43,17 @@ def test_chapters_lists_chapter_zero() -> None:
     assert "8. Solution Approaches" in result.stdout
     assert "9. Future-State Solution Architecture" in result.stdout
     assert "10. Integration Strategies" in result.stdout
+    assert "11. Automation Opportunities" in result.stdout
+
+
+def test_automation_prints_modes_responsibility_and_guardrails() -> None:
+    """Chapter 11 CLI exposes authored candidates without automating decisions."""
+    result = runner.invoke(app, ["automation"])
+    assert result.exit_code == 0
+    assert result.stdout.startswith("# Automation Opportunity Analysis")
+    assert "Create follow-up reminder: Rule-based automation" in result.stdout
+    assert "## 14. Responsibility Matrix" in result.stdout
+    assert "inappropriate ranking of people" in result.stdout
 
 
 def test_integrations_prints_candidates_unknown_interfaces_and_traceability() -> None:

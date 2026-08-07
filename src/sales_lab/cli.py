@@ -19,6 +19,7 @@ from sales_lab.examples.harbor_street_music import (
 )
 from sales_lab.reports.approaches import render_solution_approach_report
 from sales_lab.reports.architecture import render_architecture_report
+from sales_lab.reports.automation import render_automation_report
 from sales_lab.reports.business_process import render_business_process_report
 from sales_lab.reports.capabilities import render_capability_report
 from sales_lab.reports.gaps import render_gap_report
@@ -32,6 +33,7 @@ from sales_lab.reports.requirements import render_requirements_report
 from sales_lab.reports.stakeholders import render_stakeholder_report
 from sales_lab.services.approaches import analyze_solution_approaches
 from sales_lab.services.architecture import analyze_architectures
+from sales_lab.services.automation import analyze_harbor_street_automation
 from sales_lab.services.business_process import validate_business_process
 from sales_lab.services.capabilities import analyze_capabilities
 from sales_lab.services.discovery_meeting import build_discovery_meeting_summary
@@ -78,6 +80,7 @@ def chapters() -> None:
         "\n8. Solution Approaches"
         "\n9. Future-State Solution Architecture"
         "\n10. Integration Strategies"
+        "\n11. Automation Opportunities and Human-in-the-Loop Design"
     )
 
 
@@ -225,6 +228,12 @@ def integrations() -> None:
         architecture_analysis, harbor_street_integration_strategies(), integration_questions()
     )
     typer.echo(render_integration_report(analysis), nl=False)
+
+
+@app.command()
+def automation() -> None:
+    """Print Chapter 11 candidate modes, human accountability, and guardrails."""
+    typer.echo(render_automation_report(analyze_harbor_street_automation()), nl=False)
 
 
 if __name__ == "__main__":  # pragma: no cover - exercised by the installed entry point.

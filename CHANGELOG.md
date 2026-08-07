@@ -37,3 +37,8 @@ All notable changes to this project will be documented in this file. The format 
   immutable overengineering and missing-capability experiments, tests, and debugging laboratory.
 
 - Chapter 10 immutable integration strategies, explicit direction and timing, interface assumptions, feasibility and failure validation, qualitative comparison, traceability, Mermaid diagrams, deterministic simulations, `sales-lab integrations`, tests, documentation, and debugging laboratory.
+- Chapter 11 immutable automation assessments, explicit activity characteristics, candidate modes,
+  human responsibility and approval boundaries, readiness and unsupported-proposal guardrails,
+  responsibility and traceability matrices, Mermaid diagrams, deterministic reminder, approval, and
+  exception simulations, immutable evidence experiments, `sales-lab automation`, tests,
+  documentation, and debugging laboratory.
